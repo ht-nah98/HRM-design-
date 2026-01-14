@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hồ Sơ Nhân Sự Chi Tiết (Quản lý)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0f172a", // Dark slate/navy as primary
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1e293b",
+                        "text-light": "#1e293b",
+                        "text-dark": "#f1f5f9",
+                        "subtext-light": "#64748b",
+                        "subtext-dark": "#94a3b8",
+                        "accent": "#3b82f6", // Blue accent for links/buttons
+                        "success": "#10b981",
+                        "warning": "#f59e0b",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'xl': '0.75rem',
+                        '2xl': '1rem',
+                        '3xl': '1.5rem',
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col items-center p-4 md:p-8 transition-colors duration-300">
+<div class="w-full max-w-7xl mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<div class="flex items-center gap-2 text-subtext-light dark:text-subtext-dark text-sm mb-1">
+<a class="hover:text-primary dark:hover:text-white transition-colors" href="#">Nhân viên</a>
+<i class="fas fa-chevron-right text-xs"></i>
+<span class="text-primary dark:text-white font-medium">Hồ sơ chi tiết</span>
+</div>
+<h1 class="text-2xl md:text-3xl font-bold text-text-light dark:text-text-dark tracking-tight">
+                Hồ Sơ Nhân Sự Chi Tiết (Quản lý)
+            </h1>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 rounded-xl bg-white dark:bg-card-dark text-subtext-light dark:text-subtext-dark border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm font-medium text-sm">
+<i class="fas fa-file-export mr-2"></i> Xuất PDF
+            </button>
+<button class="p-2 w-10 h-10 rounded-full bg-white dark:bg-card-dark shadow-sm border border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
+<i class="fas fa-moon dark:hidden"></i>
+<i class="fas fa-sun hidden dark:block"></i>
+</button>
+</div>
+</div>
+<div class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-4 space-y-6">
+<div class="bg-card-light dark:bg-card-dark rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden relative">
+<div class="h-32 bg-gradient-to-r from-blue-900 to-primary"></div>
+<div class="px-6 pb-6 relative">
+<div class="relative -mt-16 mb-4 flex justify-between items-end">
+<div class="w-32 h-32 rounded-3xl border-4 border-white dark:border-card-dark overflow-hidden shadow-lg bg-gray-200">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6eL-rviMeLBFlEjEUZGwgTOXpA1vleuT8ehrPS9NywL8Tx63gvUFaxH6AWKpnlpxkIuvVG0CsjkOPFm7g-P18Fx1hVA_fmB_UAHC71b5yQhBM5eGzV9q83FCOnqwAgiSu8oThjl9ng3WZtzQsdlljuS60nNz-A4FH7EIsot12Y2d6iODlkZY_JWpvaJ6gm0mMgUghM_Ft8NQH2Ln9QCyWsx74C4XkS6Si0G6QxXkWTUqpsrZp7srYUnDH1HLdUrdEIJJND_mt9NCr"/>
+</div>
+<span class="px-3 py-1 bg-success/10 text-success text-xs font-bold uppercase rounded-full border border-success/20 mb-2">
+                            Đang làm việc
+                        </span>
+</div>
+<div>
+<h2 class="text-2xl font-bold text-text-light dark:text-text-dark">Michael Chen</h2>
+<p class="text-subtext-light dark:text-subtext-dark font-medium">Senior Software Engineer</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark mt-1"><i class="fas fa-layer-group mr-1"></i> Phòng Công Nghệ (Cloud Infra)</p>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 bg-primary text-white py-2.5 rounded-xl font-medium hover:bg-slate-800 transition-colors text-sm shadow-lg shadow-blue-900/20">
+<i class="fas fa-comment-dots mr-2"></i> Nhắn tin
+                        </button>
+<button class="w-12 h-10 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-600 text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+<i class="fas fa-phone"></i>
+</button>
+<button class="w-12 h-10 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-600 text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+<i class="fas fa-envelope"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-4 flex items-center">
+<i class="fas fa-user-circle mr-2 text-subtext-light"></i> Thông tin cá nhân
+                </h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3 p-3 rounded-xl hover:bg-background-light dark:hover:bg-gray-800/50 transition-colors">
+<div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
+<i class="fas fa-envelope"></i>
+</div>
+<div class="overflow-hidden">
+<p class="text-xs text-subtext-light dark:text-subtext-dark">Email cá nhân</p>
+<p class="text-sm font-medium text-text-light dark:text-text-dark truncate">michael.chen@gmail.com</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl hover:bg-background-light dark:hover:bg-gray-800/50 transition-colors">
+<div class="w-10 h-10 rounded-full bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600 dark:text-purple-400">
+<i class="fas fa-phone-alt"></i>
+</div>
+<div>
+<p class="text-xs text-subtext-light dark:text-subtext-dark">Số điện thoại</p>
+<p class="text-sm font-medium text-text-light dark:text-text-dark">+84 90 123 4567</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl hover:bg-background-light dark:hover:bg-gray-800/50 transition-colors">
+<div class="w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 dark:text-green-400">
+<i class="fas fa-birthday-cake"></i>
+</div>
+<div>
+<p class="text-xs text-subtext-light dark:text-subtext-dark">Ngày sinh</p>
+<p class="text-sm font-medium text-text-light dark:text-text-dark">15/08/1990 (34 tuổi)</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl hover:bg-background-light dark:hover:bg-gray-800/50 transition-colors">
+<div class="w-10 h-10 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-600 dark:text-orange-400">
+<i class="fas fa-map-marker-alt"></i>
+</div>
+<div>
+<p class="text-xs text-subtext-light dark:text-subtext-dark">Địa chỉ</p>
+<p class="text-sm font-medium text-text-light dark:text-text-dark">Quận 1, TP. Hồ Chí Minh</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-4 text-red-500 flex items-center">
+<i class="fas fa-exclamation-circle mr-2"></i> Liên hệ khẩn cấp
+                </h3>
+<div class="p-4 bg-red-50 dark:bg-red-900/10 rounded-2xl border border-red-100 dark:border-red-900/20">
+<p class="text-sm font-bold text-text-light dark:text-text-dark mb-1">Linda Chen (Vợ)</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark mb-2">Quan hệ: Gia đình</p>
+<a class="inline-flex items-center text-sm font-bold text-red-600 dark:text-red-400 hover:underline" href="tel:+84987654321">
+<i class="fas fa-phone mr-1.5"></i> +84 98 765 4321
+                    </a>
+</div>
+</div>
+</div>
+<div class="lg:col-span-8 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-card-light dark:bg-card-dark p-5 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<span class="text-subtext-light dark:text-subtext-dark text-sm font-medium">Thâm niên</span>
+<div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+<i class="fas fa-hourglass-half text-xs"></i>
+</div>
+</div>
+<div>
+<span class="text-3xl font-bold text-text-light dark:text-text-dark">4.5</span>
+<span class="text-sm text-subtext-light ml-1">năm</span>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-5 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<span class="text-subtext-light dark:text-subtext-dark text-sm font-medium">Ngày phép còn lại</span>
+<div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400">
+<i class="fas fa-plane-departure text-xs"></i>
+</div>
+</div>
+<div>
+<span class="text-3xl font-bold text-text-light dark:text-text-dark">12</span>
+<span class="text-sm text-subtext-light ml-1">/ 15 ngày</span>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-5 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<span class="text-subtext-light dark:text-subtext-dark text-sm font-medium">Đánh giá 2023</span>
+<div class="w-8 h-8 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center text-yellow-600 dark:text-yellow-400">
+<i class="fas fa-star text-xs"></i>
+</div>
+</div>
+<div>
+<span class="text-3xl font-bold text-text-light dark:text-text-dark">4.8</span>
+<span class="text-sm text-subtext-light ml-1">/ 5.0 (Xuất sắc)</span>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark">
+<i class="fas fa-briefcase mr-2 text-subtext-light"></i> Thông tin công việc
+                    </h3>
+<button class="text-sm text-accent hover:underline">Chỉnh sửa</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<div>
+<p class="text-xs text-subtext-light dark:text-subtext-dark mb-1">Mã nhân viên</p>
+<p class="text-base font-semibold text-text-light dark:text-text-dark">EMP-2019-0842</p>
+</div>
+<div>
+<p class="text-xs text-subtext-light dark:text-subtext-dark mb-1">Loại hợp đồng</p>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                            Toàn thời gian (Không thời hạn)
+                        </span>
+</div>
+<div>
+<p class="text-xs text-subtext-light dark:text-subtext-dark mb-1">Ngày bắt đầu</p>
+<p class="text-base font-semibold text-text-light dark:text-text-dark">12/03/2019</p>
+</div>
+<div>
+<p class="text-xs text-subtext-light dark:text-subtext-dark mb-1">Email công ty</p>
+<p class="text-base font-semibold text-text-light dark:text-text-dark">michael.chen@company.com</p>
+</div>
+<div class="md:col-span-2 pt-4 border-t border-gray-100 dark:border-gray-700">
+<p class="text-xs text-subtext-light dark:text-subtext-dark mb-3">Quản lý trực tiếp</p>
+<div class="flex items-center gap-4 p-3 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
+<img alt="Manager" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAIp9utE7KP020Ck9sChk44EhWvSN4VvwOfBIGLLpwWQDvirrrV7whyFnpqEWNHpUiR1TQ5zCibIndRqhROmQR1Goa0dxUUw9Fz9OK5T5c_cf-Qxbsuo7kf2CydnpGjaBNR5yPbAFZtWUjwp7uXOeTYLK0yFyLdAjp3BVVuxOXHNReZl0USjqO0qWrYgnhCn_ell2DF3xxUIPjQSoshl_PnbY79wz54T_YuBJOu_32FK_CFs207G0AqZ0SFkmDgLxDY_ArV9Q05i-k"/>
+<div>
+<p class="text-sm font-bold text-text-light dark:text-text-dark">Sarah Johnson</p>
+<p class="text-xs text-subtext-light dark:text-subtext-dark">Head of Engineering</p>
+</div>
+<button class="ml-auto text-sm text-subtext-light hover:text-primary dark:hover:text-white">
+<i class="fas fa-chevron-right"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 relative overflow-hidden">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark">
+<i class="fas fa-money-bill-wave mr-2 text-subtext-light"></i> Lương &amp; Phúc lợi
+                    </h3>
+<div class="flex items-center gap-2">
+<span class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-500 px-2 py-1 rounded">
+<i class="fas fa-lock mr-1"></i> Manager Only
+                         </span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-4 rounded-2xl bg-gradient-to-br from-primary to-slate-800 text-white">
+<p class="text-xs opacity-70 mb-1">Lương cơ bản (Tháng)</p>
+<p class="text-2xl font-bold">45,000,000 ₫</p>
+<div class="mt-4 text-xs opacity-70 flex items-center">
+<i class="fas fa-chart-line mr-1"></i> Tăng 10% so với 2022
+                        </div>
+</div>
+<div class="p-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/20">
+<p class="text-xs text-subtext-light dark:text-subtext-dark mb-1">Thưởng hiệu suất (Dự kiến)</p>
+<p class="text-xl font-bold text-text-light dark:text-text-dark">~ 3 tháng lương</p>
+<div class="mt-4 text-xs text-green-600 font-medium">
+                            Dựa trên KPI 2024
+                        </div>
+</div>
+<div class="p-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/20">
+<p class="text-xs text-subtext-light dark:text-subtext-dark mb-1">Tài khoản ngân hàng</p>
+<p class="text-lg font-bold text-text-light dark:text-text-dark font-mono">**** 8899</p>
+<div class="mt-4 text-xs text-subtext-light dark:text-subtext-dark">
+                            Techcombank - Chi nhánh HCM
+                        </div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-card-light dark:bg-card-dark rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-4">
+<i class="fas fa-chart-bar mr-2 text-subtext-light"></i> Lịch sử đánh giá
+                    </h3>
+<div class="space-y-4">
+<div class="flex items-start gap-4 relative pb-4 border-l-2 border-gray-200 dark:border-gray-700 pl-4 last:border-0 last:pb-0">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-green-500 border-2 border-white dark:border-card-dark"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-text-light dark:text-text-dark text-sm">Năm 2023 - Q4</h4>
+<span class="px-2 py-0.5 rounded text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">4.8/5.0</span>
+</div>
+<p class="text-xs text-subtext-light dark:text-subtext-dark mt-1">"Vượt chỉ tiêu dự án Cloud Migration. Khả năng lãnh đạo tốt."</p>
+</div>
+</div>
+<div class="flex items-start gap-4 relative pb-4 border-l-2 border-gray-200 dark:border-gray-700 pl-4 last:border-0 last:pb-0">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500 border-2 border-white dark:border-card-dark"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-text-light dark:text-text-dark text-sm">Năm 2023 - Q2</h4>
+<span class="px-2 py-0.5 rounded text-xs font-bold bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">4.5/5.0</span>
+</div>
+<p class="text-xs text-subtext-light dark:text-subtext-dark mt-1">"Hoàn thành tốt nhiệm vụ. Cần cải thiện kỹ năng giao tiếp nhóm."</p>
+</div>
+</div>
+<div class="flex items-start gap-4 relative pl-4">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 border-2 border-white dark:border-card-dark dark:bg-gray-600"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-text-light dark:text-text-dark text-sm">Năm 2022 - Tổng kết</h4>
+<span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300">4.2/5.0</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-4">
+<i class="fas fa-graduation-cap mr-2 text-subtext-light"></i> Đào tạo &amp; Phát triển
+                    </h3>
+<div class="space-y-3">
+<div class="p-3 rounded-2xl bg-background-light dark:bg-gray-800/50 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-white dark:bg-card-dark shadow-sm flex items-center justify-center text-orange-500">
+<i class="fab fa-aws text-xl"></i>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-text-light dark:text-text-dark">AWS Solution Architect</h4>
+<p class="text-xs text-subtext-light dark:text-subtext-dark">Chứng chỉ chuyên nghiệp</p>
+</div>
+<span class="text-xs font-semibold text-green-600"><i class="fas fa-check-circle"></i> Đạt</span>
+</div>
+<div class="p-3 rounded-2xl bg-background-light dark:bg-gray-800/50 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-white dark:bg-card-dark shadow-sm flex items-center justify-center text-blue-500">
+<i class="fas fa-users-cog text-lg"></i>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-text-light dark:text-text-dark">Leadership 101</h4>
+<p class="text-xs text-subtext-light dark:text-subtext-dark">Khóa học nội bộ</p>
+</div>
+<span class="text-xs font-semibold text-warning"><i class="fas fa-spinner fa-spin"></i> 80%</span>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700">
+<button class="w-full text-center text-sm font-medium text-primary dark:text-white hover:underline">
+                                Xem tất cả khóa học
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-4">
+<i class="fas fa-calendar-check mr-2 text-subtext-light"></i> Lịch sử nghỉ phép gần đây
+                </h3>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="text-xs text-subtext-light dark:text-subtext-dark uppercase bg-gray-50 dark:bg-gray-800/50">
+<tr>
+<th class="px-4 py-3 rounded-l-xl">Loại nghỉ</th>
+<th class="px-4 py-3">Thời gian</th>
+<th class="px-4 py-3">Số ngày</th>
+<th class="px-4 py-3 rounded-r-xl">Trạng thái</th>
+</tr>
+</thead>
+<tbody class="text-text-light dark:text-text-dark">
+<tr class="border-b border-gray-100 dark:border-gray-800">
+<td class="px-4 py-3 font-medium">Nghỉ phép năm</td>
+<td class="px-4 py-3">20/01/2024 - 22/01/2024</td>
+<td class="px-4 py-3">3.0</td>
+<td class="px-4 py-3"><span class="text-green-600 font-medium">Đã duyệt</span></td>
+</tr>
+<tr class="border-b border-gray-100 dark:border-gray-800">
+<td class="px-4 py-3 font-medium">Nghỉ ốm</td>
+<td class="px-4 py-3">15/12/2023</td>
+<td class="px-4 py-3">1.0</td>
+<td class="px-4 py-3"><span class="text-green-600 font-medium">Đã duyệt</span></td>
+</tr>
+<tr>
+<td class="px-4 py-3 font-medium">Việc riêng</td>
+<td class="px-4 py-3">05/11/2023</td>
+<td class="px-4 py-3">0.5</td>
+<td class="px-4 py-3"><span class="text-green-600 font-medium">Đã duyệt</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        // Check local storage or system preference on load
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        themeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+    </script>
+
+</body></html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Danh Sách Hồ Sơ Nhân Viên</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0f172a", // Dark slate/navy as primary
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1e293b",
+                        "text-light": "#1e293b",
+                        "text-dark": "#f1f5f9",
+                        "subtext-light": "#64748b",
+                        "subtext-dark": "#94a3b8",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col justify-start items-center p-6 transition-colors duration-300">
+<div class="w-full max-w-7xl mt-6 mb-8 flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<h1 class="text-3xl font-bold text-text-light dark:text-text-dark tracking-tight">
+            Danh Sách Hồ Sơ Nhân Viên
+        </h1>
+<button class="p-2 rounded-full bg-white dark:bg-card-dark shadow-sm border border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
+<i class="fas fa-moon dark:hidden"></i>
+<i class="fas fa-sun hidden dark:block"></i>
+</button>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<button class="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-semibold shadow-md hover:bg-opacity-90 transition-all">
+            All Employees
+        </button>
+<button class="px-5 py-2.5 rounded-full bg-white dark:bg-card-dark text-subtext-light dark:text-subtext-dark border border-gray-200 dark:border-gray-700 text-sm font-medium hover:border-primary hover:text-primary dark:hover:text-white transition-all shadow-sm">
+            Chair Main
+        </button>
+<button class="px-5 py-2.5 rounded-full bg-white dark:bg-card-dark text-subtext-light dark:text-subtext-dark border border-gray-200 dark:border-gray-700 text-sm font-medium hover:border-primary hover:text-primary dark:hover:text-white transition-all shadow-sm">
+            C-Level, Director
+        </button>
+<button class="px-5 py-2.5 rounded-full bg-white dark:bg-card-dark text-subtext-light dark:text-subtext-dark border border-gray-200 dark:border-gray-700 text-sm font-medium hover:border-primary hover:text-primary dark:hover:text-white transition-all shadow-sm">
+            Staff
+        </button>
+</div>
+</div>
+<div class="w-full max-w-7xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 mb-12">
+<div class="col-span-full mt-2 mb-2 flex items-center gap-4">
+<h2 class="text-lg font-bold text-subtext-light dark:text-subtext-dark uppercase tracking-wider flex items-center gap-3">
+<span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+            Chair Main
+        </h2>
+<div class="h-px bg-gray-200 dark:bg-gray-700 flex-grow"></div>
+</div>
+<div class="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 h-96 relative overflow-hidden rounded-3xl cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-card-light dark:bg-card-dark group">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90 z-10"></div>
+<img alt="Michael Chen Portrait" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6eL-rviMeLBFlEjEUZGwgTOXpA1vleuT8ehrPS9NywL8Tx63gvUFaxH6AWKpnlpxkIuvVG0CsjkOPFm7g-P18Fx1hVA_fmB_UAHC71b5yQhBM5eGzV9q83FCOnqwAgiSu8oThjl9ng3WZtzQsdlljuS60nNz-A4FH7EIsot12Y2d6iODlkZY_JWpvaJ6gm0mMgUghM_Ft8NQH2Ln9QCyWsx74C4XkS6Si0G6QxXkWTUqpsrZp7srYUnDH1HLdUrdEIJJND_mt9NCr"/>
+<div class="absolute bottom-0 left-0 right-0 p-6 z-20 flex flex-col items-start justify-end h-full">
+<span class="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-white uppercase bg-blue-600 rounded-full shadow-md">Chair Main</span>
+<h3 class="text-2xl font-bold text-white mb-1">Michael Chen</h3>
+<p class="text-sm text-gray-200 mb-4 line-clamp-2">Chairman of the Board. Driving strategic vision and global expansion.</p>
+<div class="flex gap-3 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<button class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-primary transition-colors">
+<i class="fab fa-github"></i>
+</button>
+<button class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-primary transition-colors">
+<i class="fab fa-linkedin-in"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="col-span-full mt-8 mb-2 flex items-center gap-4">
+<h2 class="text-lg font-bold text-subtext-light dark:text-subtext-dark uppercase tracking-wider flex items-center gap-3">
+<span class="w-1.5 h-6 bg-purple-600 rounded-full"></span>
+            C-Level, Director
+        </h2>
+<div class="h-px bg-gray-200 dark:bg-gray-700 flex-grow"></div>
+</div>
+<div class="h-96 relative overflow-hidden rounded-3xl cursor-pointer group shadow-md hover:shadow-lg transition-all duration-300 bg-gray-200 dark:bg-gray-800">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-70 group-hover:opacity-90 transition-opacity"></div>
+<img alt="David Park" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAK3IY7B0MqJbQfsI_2vM31uhI-HvlbWadhR9fN5niMwp6fMqOwzZ9lYnqZXauSHOiOAbCWebU_NQMtd9_hHu295qQ2P0dJLstc9QhG9jJwTG01K4UHmsRWHequUP5ZjN4SGrtFs93jlpZNJW0OO0y7jmlelnO_puuo5XdeBFB-YQtokllV66P2BLjZpHaJS1Ss9T9IgI8lUwJrG_Pq1c0IR_6fOCO0u56SQxU_bTkeS8gbVdlqDhM926oXXIyW7hJN1WwTJ9l2PDC"/>
+<div class="absolute bottom-4 left-4 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+<span class="inline-block px-2 py-0.5 mb-2 text-[10px] font-bold tracking-wider text-white uppercase bg-purple-600 rounded-md">C-Level</span>
+<h3 class="text-lg font-bold text-white leading-tight">David<br/>Park</h3>
+<p class="text-xs text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">Chief Technology Officer</p>
+</div>
+</div>
+<div class="h-96 relative overflow-hidden rounded-3xl cursor-pointer group shadow-md hover:shadow-lg transition-all duration-300 bg-gray-200 dark:bg-gray-800">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-70 group-hover:opacity-90 transition-opacity"></div>
+<img alt="Sarah Johnson" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAIp9utE7KP020Ck9sChk44EhWvSN4VvwOfBIGLLpwWQDvirrrV7whyFnpqEWNHpUiR1TQ5zCibIndRqhROmQR1Goa0dxUUw9Fz9OK5T5c_cf-Qxbsuo7kf2CydnpGjaBNR5yPbAFZtWUjwp7uXOeTYLK0yFyLdAjp3BVVuxOXHNReZl0USjqO0qWrYgnhCn_ell2DF3xxUIPjQSoshl_PnbY79wz54T_YuBJOu_32FK_CFs207G0AqZ0SFkmDgLxDY_ArV9Q05i-k"/>
+<div class="absolute bottom-4 left-4 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+<span class="inline-block px-2 py-0.5 mb-2 text-[10px] font-bold tracking-wider text-white uppercase bg-purple-600 rounded-md">Director</span>
+<h3 class="text-lg font-bold text-white leading-tight">Sarah<br/>Johnson</h3>
+<p class="text-xs text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">Director of Product</p>
+</div>
+</div>
+<div class="h-96 relative overflow-hidden rounded-3xl cursor-pointer group shadow-md hover:shadow-lg transition-all duration-300 bg-gray-200 dark:bg-gray-800">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-70 group-hover:opacity-90 transition-opacity"></div>
+<img alt="Emily Davis" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf40ATYQ8Z6UlGlNyyHTyoRaQNhbpAciG43LX6jG1f7cD5_XEz3UEfm2k4E3TvwfNqk4Xub5vtSKnib2La8LNuvjV-YXks57hBci9IxDunbxTiK4Tx8e3sn0L2us2FqmTsipHIjeI9TQcqDGKf055quXWukWdYJlCHFFj9jdDssmVY7pbj6UeQ3J1i6dlBJR67ELIUGqeVTp26xFGTxPQHS5gnDD-E9XscL6TvzxDDVvmjvE5p_hwPAfxmVBxU0KhTDWn3gCItWdwc"/>
+<div class="absolute bottom-4 left-4 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+<span class="inline-block px-2 py-0.5 mb-2 text-[10px] font-bold tracking-wider text-white uppercase bg-purple-600 rounded-md">Director</span>
+<h3 class="text-lg font-bold text-white leading-tight">Emily<br/>Davis</h3>
+<p class="text-xs text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">VP of Design</p>
+</div>
+</div>
+<div class="col-span-full mt-8 mb-2 flex items-center gap-4">
+<h2 class="text-lg font-bold text-subtext-light dark:text-subtext-dark uppercase tracking-wider flex items-center gap-3">
+<span class="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
+            Staff
+        </h2>
+<div class="h-px bg-gray-200 dark:bg-gray-700 flex-grow"></div>
+</div>
+<div class="h-96 relative overflow-hidden rounded-3xl cursor-pointer group shadow-md hover:shadow-lg transition-all duration-300 bg-gray-200 dark:bg-gray-800">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity"></div>
+<img alt="James Wilson" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRUzI0CIHfEBONO4uRGkq4x7CXVmNrnI9DfYspcxnEfhNFrb7umP0KTHzSqXnRIkUjPBindIaDeAw0luXAFJgDpKghnDNoTQ8I__8faWFrfU9YjYW4kF1nALzGxpo2FFb3-W4vjXjhZD-DB3RavAHFYmGCCYgJOoDK5ELDx8ysBbH5d0i7tHYBPS93EQD7-Odkdk9pruuqCYkTZ4dTgBBQvlA3Xt29RS7mDbuomWTDStUMwZKTDdMMRG1wehfEi7aYUy0NLpmCrTxN"/>
+<div class="absolute bottom-4 left-4 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+<h3 class="text-lg font-bold text-white leading-tight">James<br/>Wilson</h3>
+<p class="text-xs text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">Frontend Dev</p>
+</div>
+</div>
+<div class="h-96 relative overflow-hidden rounded-3xl cursor-pointer group shadow-md hover:shadow-lg transition-all duration-300 bg-gray-200 dark:bg-gray-800">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity"></div>
+<img alt="Anna Martinez" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZeEqCYXOAWrvH5FYstESGcK85HWw2tjFX762GaetVIy4Mu-T32DpElafhM41R0jRDlD6j7CFaKsGygXXbTvQI9oPv_YJqLaiy-0nU7LcYdimXv9v2pFWFJ20qPrzNS97whXQ3SBr_1pR98CdKE6tX2Ux1ns5fLmutBAcJxiG78Yf8QKtFdYmmOTLwI-j8mAksX0WRnz1z7Of3RcIkbQ0EIiX8gdUoc5dhaRbwxXvZfXRPUtN1tfDRBj0y7WbZ7cype0QOtz6GeT23"/>
+<div class="absolute bottom-4 left-4 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+<h3 class="text-lg font-bold text-white leading-tight">Anna<br/>Martinez</h3>
+<p class="text-xs text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">Marketing Lead</p>
+</div>
+</div>
+<div class="h-96 relative overflow-hidden rounded-3xl cursor-pointer group shadow-md hover:shadow-lg transition-all duration-300 bg-gray-200 dark:bg-gray-800">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity"></div>
+<img alt="Robert Fox" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrm-3chrOXk2_H5jMMMjWcML3AcZoBADbJ90dx_aY58upGnLWJF3L9_fhPcax2Ghe69v3xsLna2mhjX8Q9hQkdnOlrFjLaHRz3Hiegh7n0GSrArPunrCu7boadr-_-7ZQ9RIJ59S9uy3ddAk7B87VUqC2Og1RombeTMIyx5rJ378istAPfS4hc1FunZvYpteAGzjziwBCTjArpGBJzjUf_u5GD_RV8jRI9MMRAH8MwygU4a0YEdXvN4EzZiGsdFutf1xakjdIMhy5d"/>
+<div class="absolute bottom-4 left-4 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+<h3 class="text-lg font-bold text-white leading-tight">Robert<br/>Fox</h3>
+<p class="text-xs text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">Project Manager</p>
+</div>
+</div>
+<div class="h-96 relative overflow-hidden rounded-3xl cursor-pointer group shadow-md hover:shadow-lg transition-all duration-300 bg-gray-200 dark:bg-gray-800">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity"></div>
+<img alt="Lisa Wong" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSBgDA1JyNVoHb1NFvcU27JvAUlB-jB3vo1FMxnCe5zle3kDsPC5oE8iltfHHRhhGWoP2kuPB70L0XO-HtdTeEuMuP0UL0jveRMeJcxa-Kb5pCI72oOjVIMWFh9UVKhGJJnJJ09_imWQg3dXs7LQWUb-KHaf2VK0jctmMJHVykvTEoD3fkMRH8dldVMAbf6uTkfXW-Doa2zV7UQppvb8HKfpSfaPv88x0pdy33fFhyrdkstAol-oNIMNxUnckCC6slneVwAj3Xke5s"/>
+<div class="absolute bottom-4 left-4 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+<h3 class="text-lg font-bold text-white leading-tight">Lisa<br/>Wong</h3>
+<p class="text-xs text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">Data Scientist</p>
+</div>
+</div>
+</div>
+<div class="w-full max-w-7xl mt-auto flex justify-center items-center gap-4 mb-8">
+<button class="w-10 h-10 rounded-full bg-white dark:bg-card-dark shadow-sm border border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center justify-center">
+<i class="fas fa-chevron-left"></i>
+</button>
+<div class="flex gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary cursor-pointer"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-600 hover:bg-primary/50 cursor-pointer transition-colors"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-600 hover:bg-primary/50 cursor-pointer transition-colors"></span>
+</div>
+<button class="w-10 h-10 rounded-full bg-white dark:bg-card-dark shadow-sm border border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center justify-center">
+<i class="fas fa-chevron-right"></i>
+</button>
+</div>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+        } else {
+            html.classList.add('dark');
+        }
+    });
+</script>
+
+</body></html>

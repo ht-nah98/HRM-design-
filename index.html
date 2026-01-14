@@ -1,0 +1,3221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRM System 2026 - Kick-off Presentation</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Slide Container */
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 80px;
+            position: relative;
+            scroll-snap-align: start;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
+        
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 1000px;
+            z-index: 2;
+        }
+
+        .slide-header h2 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .slide-header p {
+            font-size: 20px;
+            color: #a0a0a0;
+            font-weight: 300;
+        }
+
+        /* Slide 1: Cover */
+        .cover {
+            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0a0a0a 100%);
+            overflow: hidden;
+        }
+
+        .cover-content {
+            z-index: 10;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-content h1 {
+            font-size: 96px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            text-shadow: 0 4px 30px rgba(118, 75, 162, 0.5);
+        }
+
+        .cover-content .tagline {
+            font-size: 24px;
+            font-weight: 300;
+            color: #ccc;
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cover-bg-anim {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb-1 { width: 400px; height: 400px; background: #667eea; top: -100px; left: -100px; }
+        .orb-2 { width: 500px; height: 500px; background: #764ba2; bottom: -150px; right: -150px; animation-delay: -5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 50px); }
+        }
+
+        /* Slide 2: Business Goals */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            z-index: 2;
+        }
+
+        .goal-card {
+            background: rgba(20, 20, 30, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .goal-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: var(--accent-gradient);
+            opacity: 0.7;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .goal-metric {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        
+        .goal-metric span {
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.6;
+            margin-left: 5px;
+        }
+
+        .goal-desc {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #aaa;
+        }
+
+        /* Slide 3: HRM Tool Goals */
+        .pillar-container {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+            max-width: 1300px;
+            z-index: 2;
+            justify-content: center;
+        }
+
+        .pillar-card {
+            flex: 1;
+            background: linear-gradient(180deg, rgba(30, 30, 40, 0.8) 0%, rgba(10, 10, 15, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .pillar-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .pillar-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .pillar-list {
+            text-align: left;
+            margin-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+        
+        .pillar-list div {
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #bbb;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .pillar-list div::before {
+            content: "•";
+            color: #667eea;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Slide 4 (formerly 7): Annual Roadmap */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #0a0a0a;
+            border: 4px solid #667eea;
+            border-radius: 50%;
+            top: 30px;
+            z-index: 1;
+        }
+
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; }
+
+        .left::after { right: -12px; }
+        .right::after { left: -12px; }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+
+        .timeline-content h3 { color: #667eea; margin-bottom: 5px; }
+        .timeline-content h4 { font-size: 18px; margin-bottom: 10px; }
+        .timeline-content p { font-size: 14px; color: #aaa; margin-bottom: 5px; }
+
+        /* Module 1 Unified Slide */
+        .module-container {
+            display: flex;
+            width: 100%;
+            max-width: 1300px;
+            height: 70vh;
+            gap: 40px;
+        }
+
+        .module-info {
+            flex: 0.35;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .module-epics {
+            flex: 0.65;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .module-tag {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .module-title {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .module-subtitle {
+            font-size: 18px;
+            color: #667eea;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Messages & Layout Refinements */
+        .module-message {
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 1.4;
+            color: #ddd;
+            margin-bottom: 25px;
+            border-left: 3px solid #667eea;
+            padding-left: 20px;
+            font-style: italic;
+        }
+
+        .highlight-text {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        .module-commitment {
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #aaa;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .goals-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .goal-item {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .epic-card {
+            background: rgba(25, 25, 35, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        /* Subtle glow active state */
+        .epic-card:hover, .epic-card.active {
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateX(10px);
+        }
+
+        .epic-header {
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .epic-icon-box {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .epic-title-group { flex: 1; }
+
+        .epic-name { 
+            font-weight: 700; 
+            font-size: 16px; 
+            color: #fff; 
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+        
+        .epic-desc {
+            font-size: 12px;
+            color: #888;
+            font-weight: 400;
+        }
+
+        .epic-arrow { 
+            font-size: 12px;
+            color: #555;
+            transition: transform 0.3s; 
+        }
+        
+        .epic-card.active .epic-arrow { 
+            transform: rotate(180deg); 
+            color: #667eea;
+        }
+
+        .epic-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: rgba(0,0,0,0.2);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .epic-card.active .epic-body {
+            max-height: 200px;
+        }
+        
+        /* Custom Bullet List for Epics */
+        .epic-list {
+            padding: 20px 25px;
+            list-style: none;
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* Slide 8: Weekly Plan (New Style) */
+        .weekly-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1400px;
+        }
+        
+        .week-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 16px;
+            position: relative;
+        }
+        
+        .week-card.active {
+            background: rgba(102, 126, 234, 0.05);
+            border-color: rgba(102, 126, 234, 0.4);
+        }
+
+        .week-header {
+            font-size: 14px;
+            color: #667eea;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .week-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .week-list {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Q&A */
+        .qa-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+            height: 600px;
+        }
+        
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+        .dot {
+            width: 10px; height: 10px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; transition: all 0.3s;
+        }
+        .dot.active { background: #667eea; transform: scale(1.4); }
+
+        .slide-number {
+            position: absolute; bottom: 30px; right: 40px; opacity: 0.3; font-family: monospace;
+        }
+
+        /* Updated Slide 3: 3x2 Grid */
+        .problem-grid-3x2 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+
+        .problem-card {
+            background: rgba(30, 30, 40, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+            min-height: 200px;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border-color: rgba(255, 71, 87, 0.4);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 10px;
+        }
+
+        .p-icon {
+            width: 40px; height: 40px;
+            background: rgba(255, 71, 87, 0.1);
+            color: #ff6b81;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .problem-card h3 {
+            font-size: 16px;
+            color: #ffefff;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .p-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .p-row {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.4;
+        }
+        
+        .p-row span {
+            color: #ff6b81;
+            font-weight: bold;
+            display: inline-block;
+            width: 30px;
+        }
+
+        .p-risk {
+            margin-top: auto;
+            padding-top: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #ff4757;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Summary Card Styling */
+        .problem-card.summary-card {
+            background: rgba(255, 71, 87, 0.1);
+            border: 1px solid rgba(255, 71, 87, 0.5);
+            box-shadow: 0 0 20px rgba(255, 71, 87, 0.1);
+        }
+        
+        .problem-card.summary-card:hover {
+            box-shadow: 0 0 30px rgba(255, 71, 87, 0.3);
+        }
+        /* Updated Styles for Slide 17 Job Levels */
+        .job-level {
+            width: 80%;
+            margin: 5px 0;
+            background: #2a2a35;
+            border: 1px solid #444;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .job-level:hover {
+            border-color: #fff;
+            z-index: 10;
+        }
+
+        .level-badge {
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-right: 15px;
+            font-size: 12px;
+            color: #000;
+            width: 35px;
+            text-align: center;
+        }
+        
+        .level-badge.l1 { background: #FFD700; }
+        .level-badge.l2 { background: #FF8C00; }
+        .level-badge.l3 { background: #4b6cb7; color:#fff; }
+        .level-badge.l4 { background: #11998e; color:#fff; }
+        .level-badge.l5 { background: #eee; }
+
+        .level-content { font-size: 13px; color: #ddd; }
+        .level-content strong { color: #fff; font-size: 14px; display: block; margin-bottom: 2px; }
+
+        /* Pyramid width effect */
+        .job-level.l1 { width: 50%; border-color: #FFD700; box-shadow: 0 0 10px rgba(255, 215, 0, 0.2); }
+        .job-level.l2 { width: 60%; }
+        .job-level.l3 { width: 70%; }
+        .job-level.l4 { width: 80%; }
+        .job-level.l5 { width: 90%; }
+
+        /* Updated Slide 16 5-Level Org Styles */
+        .org-container-5lvl {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 10px 20px;
+            position: relative;
+            /* Removed overflow-y: auto */
+        }
+        .lvl-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .lvl-card {
+            background: rgba(30, 30, 40, 0.9);
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 8px 12px;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+            transition: all 0.3s;
+            min-width: 100px;
+            cursor: default;
+        }
+        .lvl-card:hover { transform: scale(1.05); border-color: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10; }
+        .lvl-card .title { font-size: 9px; font-weight: bold; color: #888; text-transform: uppercase; margin-bottom: 2px; }
+        .lvl-card .content { font-size: 11px; font-weight: bold; color: #fff; }
+        .lvl-card .sub { font-size: 10px; color: #888; font-style: italic; }
+        .lvl-1 .lvl-card { background: linear-gradient(135deg, #1e3c72, #2a5298); border-color: #4b6cb7; width: 200px; }
+        .lvl-1 .title { color: #89C4F4; }
+        .lvl-2 .gov { border-color: #4b6cb7; background: rgba(75, 108, 183, 0.15); }
+        .lvl-2 .gov .title { color: #4b6cb7; }
+        .lvl-2 .biz { border-color: #11998e; background: rgba(17, 153, 142, 0.15); }
+        .lvl-2 .biz .title { color: #11998e; }
+        .lvl-3 .lvl-card { border-style: dashed; min-width: 80px; padding: 6px 10px; }
+        .lvl-3 .lvl-card .content { font-size: 10px; }
+        .lvl-4 .lvl-card { min-width: 70px; padding: 5px 8px; }
+        .lvl-4 .lvl-card .content { font-size: 10px; }
+
+        /* Connector lines */
+        .conn-v { 
+            width: 1px; 
+            background: linear-gradient(to bottom, #555, transparent); 
+            height: 20px; 
+            position: absolute; 
+            bottom: -20px; 
+            left: 50%; 
+            z-index: 1; 
+        }
+        .bridge-row { 
+            position: relative; 
+            width: 40%; 
+            height: 15px; 
+            border-top: 1px solid #555; 
+            border-left: 1px solid #555; 
+            border-right: 1px solid #555; 
+            margin: 0 auto 8px; 
+            border-radius: 8px 8px 0 0; 
+        }
+        /* Horizontal bridge for L3 */
+        .lvl-3 > div::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: #444;
+        }
+        .member-node { display: flex; align-items: center; gap: 6px; background: #111; padding: 4px 8px; border-radius: 15px; border: 1px solid #333; font-size: 10px; }
+        .definition-panel {
+            position: absolute; top: 10px; right: 10px;
+            width: 180px; padding: 8px; background: rgba(0,0,0,0.85); border: 1px solid #555; border-radius: 8px;
+            font-size: 10px; color: #ccc;
+            display: none; pointer-events: none;
+        }
+
+        /* ===== LIGHT THEME - HARMONIZED ===== */
+        body.light-theme {
+            --bg-color: #f8f9fc;
+            --text-color: #2d3748;
+            --glass-bg: rgba(0, 0, 0, 0.02);
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        body.light-theme {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        body.light-theme .slide {
+            background-color: var(--bg-color);
+        }
+
+        body.light-theme .cover {
+            background: radial-gradient(circle at 50% 50%, #eef1f7 0%, #f8f9fc 100%);
+        }
+
+        body.light-theme .cover-content h1 {
+            text-shadow: 0 4px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        body.light-theme .cover-content .tagline {
+            color: #64748b;
+        }
+
+        body.light-theme .slide-header h2 {
+            color: #1e293b;
+        }
+
+        body.light-theme .slide-header p {
+            color: #64748b;
+        }
+
+        /* Cards */
+        body.light-theme .goal-card,
+        body.light-theme .pillar-card,
+        body.light-theme .epic-card,
+        body.light-theme .week-card {
+            background: #ffffff;
+            border-color: #e2e8f0;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        body.light-theme .goal-card h4 { color: #334155; }
+        body.light-theme .goal-metric { color: #1e293b; }
+        body.light-theme .goal-desc { color: #64748b; }
+        body.light-theme .epic-desc { color: #64748b; }
+        body.light-theme .epic-list { color: #475569; }
+        body.light-theme .epic-name { color: #1e293b; }
+        body.light-theme .epic-icon-box { background: rgba(102, 126, 234, 0.08); }
+
+        body.light-theme .epic-card:hover,
+        body.light-theme .epic-card.active {
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.06) 0%, rgba(118, 75, 162, 0.04) 100%);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        /* Problem Cards - Softer tones */
+        body.light-theme .problem-card {
+            background: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+        body.light-theme .problem-card h3 { color: #b91c1c !important; }
+        body.light-theme .p-row { color: #475569; }
+        body.light-theme .p-row span { color: #b91c1c !important; }
+        body.light-theme .p-risk { color: #b91c1c !important; }
+        body.light-theme .p-icon { background: rgba(185, 28, 28, 0.08) !important; }
+        body.light-theme .summary-card {
+            background: rgba(254, 226, 226, 0.4) !important;
+            border-color: rgba(185, 28, 28, 0.25) !important;
+        }
+
+        /* Module Styles */
+        body.light-theme .module-title { color: #1e293b; }
+        body.light-theme .module-subtitle { color: #667eea; }
+        body.light-theme .module-message { color: #475569; background: rgba(102, 126, 234, 0.04); }
+        body.light-theme .module-commitment { color: #64748b; }
+        body.light-theme .highlight-text { color: #667eea !important; }
+        body.light-theme .goal-item {
+            background: rgba(102, 126, 234, 0.08);
+            border-color: rgba(102, 126, 234, 0.2) !important;
+            color: #4f46e5 !important;
+        }
+
+        /* Timeline */
+        body.light-theme .timeline-content {
+            background: #ffffff;
+            border-color: #e2e8f0;
+        }
+        body.light-theme .timeline-content h3 { color: #667eea; }
+        body.light-theme .timeline-content h4 { color: #1e293b; }
+        body.light-theme .timeline-content p { color: #64748b; }
+        body.light-theme .timeline::before { background: #e2e8f0; }
+
+        /* Pillar Cards */
+        body.light-theme .pillar-card { background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); }
+        body.light-theme .pillar-card h3 { color: #1e293b; }
+        body.light-theme .pillar-list div { color: #64748b; }
+        body.light-theme .pillar-icon { background: rgba(102, 126, 234, 0.08); border-color: rgba(102, 126, 234, 0.15); }
+
+        /* Organization Cards */
+        body.light-theme .lvl-card { background: #ffffff; border-color: #e2e8f0; }
+        body.light-theme .lvl-card .title { color: #64748b; }
+        body.light-theme .lvl-card .content { color: #1e293b; }
+        body.light-theme .lvl-card .sub { color: #94a3b8; }
+        body.light-theme .job-level { background: #ffffff; border-color: #e2e8f0; }
+        body.light-theme .level-content { color: #475569; }
+        body.light-theme .level-content strong { color: #1e293b; }
+        body.light-theme .member-node { background: #f1f5f9; border-color: #e2e8f0; color: #475569; }
+
+        /* Design Cards */
+        body.light-theme .design-card { background: #ffffff; border-color: #e2e8f0; }
+        body.light-theme .design-label { color: #475569; }
+
+        /* Week Cards */
+        body.light-theme .week-header { color: #667eea; }
+        body.light-theme .week-title { color: #1e293b; }
+        body.light-theme .week-list { color: #64748b; }
+        body.light-theme .week-card.active { border-color: rgba(102, 126, 234, 0.4); background: rgba(102, 126, 234, 0.03); }
+
+        /* Navigation & UI */
+        body.light-theme .slide-number { color: #94a3b8; }
+        body.light-theme .dot { background: #cbd5e1; }
+        body.light-theme .dot.active { background: #667eea; }
+        body.light-theme .orb { opacity: 0.08; }
+
+        /* ===== COMPREHENSIVE INLINE STYLE OVERRIDES ===== */
+        
+        /* All gradient backgrounds in cards - make them white */
+        body.light-theme [style*="linear-gradient(135deg, rgba(255,107,107"] {
+            background: #ffffff !important;
+            border-color: #e2e8f0 !important;
+        }
+        
+        /* Stat boxes with pink/red gradient */
+        body.light-theme [style*="background: linear-gradient(135deg, rgba(255,107,107"] {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(99, 102, 241, 0.05) 100%) !important;
+            border-color: rgba(99, 102, 241, 0.2) !important;
+        }
+        
+        /* Red text colors - softer red for light mode */
+        body.light-theme [style*="color:#FF6B6B"],
+        body.light-theme [style*="color: #FF6B6B"],
+        body.light-theme [style*="color:#ff6b6b"],
+        body.light-theme [style*="color: #ff6b6b"],
+        body.light-theme [style*="color:#ee5a24"],
+        body.light-theme [style*="color: #ee5a24"] {
+            color: #dc2626 !important;
+        }
+        
+        /* Cyan text colors - deeper for light mode */
+        body.light-theme [style*="color:#00d2ff"],
+        body.light-theme [style*="color: #00d2ff"],
+        body.light-theme [style*="color:#3a7bd5"] {
+            color: #0369a1 !important;
+        }
+        
+        /* Green text/border colors */
+        body.light-theme [style*="color:#11998e"],
+        body.light-theme [style*="color: #11998e"],
+        body.light-theme [style*="color:#38ef7d"] {
+            color: #059669 !important;
+        }
+        
+        /* Quote boxes with colored backgrounds */
+        body.light-theme [style*="background: rgba(0, 210, 255"] {
+            background: rgba(14, 165, 233, 0.08) !important;
+            border-color: #0891b2 !important;
+        }
+        
+        body.light-theme [style*="border-left: 4px solid #00d2ff"] {
+            border-left-color: #0891b2 !important;
+        }
+        
+        /* Transformation/Feature cards with teal/cyan backgrounds */
+        body.light-theme [style*="background: rgba(0,0,0,0.3)"],
+        body.light-theme [style*="background: rgba(0, 0, 0, 0.3)"] {
+            background: #ffffff !important;
+            border-color: #e2e8f0 !important;
+        }
+        
+        body.light-theme [style*="border: 1px solid rgba(0,210,255"] {
+            border-color: rgba(14, 165, 233, 0.3) !important;
+        }
+        
+        /* Checkmarks in transformation cards */
+        body.light-theme [style*="background: #00d2ff"] {
+            background: #0891b2 !important;
+        }
+        
+        /* Text in feature cards */
+        body.light-theme [style*="color: #ddd"],
+        body.light-theme [style*="color:#ddd"] {
+            color: #334155 !important;
+        }
+        
+        body.light-theme [style*="color: #aaa"],
+        body.light-theme [style*="color:#aaa"] {
+            color: #475569 !important;
+        }
+        
+        body.light-theme [style*="color: #bbb"],
+        body.light-theme [style*="color:#bbb"] {
+            color: #475569 !important;
+        }
+        
+        body.light-theme [style*="color: #888"],
+        body.light-theme [style*="color:#888"] {
+            color: #64748b !important;
+        }
+        
+        body.light-theme [style*="color: #666"],
+        body.light-theme [style*="color:#666"] {
+            color: #64748b !important;
+        }
+        
+        body.light-theme [style*="color: #ccc"],
+        body.light-theme [style*="color:#ccc"] {
+            color: #475569 !important;
+        }
+        
+        body.light-theme [style*="color: #fff"],
+        body.light-theme [style*="color:#fff"] {
+            color: #1e293b !important;
+        }
+        
+        /* Foundation cards with special backgrounds */
+        body.light-theme [style*="background: rgba(75, 108, 183, 0.1)"] {
+            background: rgba(99, 102, 241, 0.08) !important;
+        }
+        
+        body.light-theme [style*="background: rgba(17, 153, 142, 0.1)"] {
+            background: rgba(16, 185, 129, 0.08) !important;
+        }
+        
+        body.light-theme [style*="border: 1px solid #4b6cb7"] {
+            border-color: rgba(99, 102, 241, 0.3) !important;
+        }
+        
+        body.light-theme [style*="border: 1px solid #11998e"] {
+            border-color: rgba(16, 185, 129, 0.3) !important;
+        }
+        
+        /* Chips with dark backgrounds - make them lighter */
+        body.light-theme [style*="background: rgba(255,255,255,0.05)"],
+        body.light-theme [style*="background: rgba(255, 255, 255, 0.05)"] {
+            background: rgba(99, 102, 241, 0.08) !important;
+            border-color: rgba(99, 102, 241, 0.2) !important;
+        }
+        
+        /* Pills/badges */
+        body.light-theme [style*="border-radius: 30px"][style*="background: rgba(102,126,234"] {
+            background: rgba(99, 102, 241, 0.1) !important;
+        }
+        
+        /* Function/Product card content */
+        body.light-theme .func-chip,
+        body.light-theme .prod-chip {
+            color: #ffffff !important;
+        }
+        
+        /* Dashed borders */
+        body.light-theme [style*="border: 1px dashed #555"],
+        body.light-theme [style*="border: 1px dashed rgba(255,255,255"] {
+            border-color: #cbd5e1 !important;
+        }
+        
+        /* Dark backgrounds in info boxes */
+        body.light-theme [style*="background: rgba(0,0,0,0.2)"],
+        body.light-theme [style*="background: rgba(0, 0, 0, 0.2)"] {
+            background: rgba(241, 245, 249, 0.8) !important;
+        }
+        
+        /* Job level pyramid text */
+        body.light-theme [style*="color: #f2994a"],
+        body.light-theme [style*="color:#f2994a"] {
+            color: #ea580c !important;
+        }
+        
+        /* Green backgrounds for pillars */
+        body.light-theme [style*="background: linear-gradient(90deg, #11998e"],
+        body.light-theme [style*="background: linear-gradient(90deg, #38ef7d"] {
+            background: linear-gradient(90deg, #10b981, #34d399) !important;
+        }
+        
+        /* Red backgrounds for tags */
+        body.light-theme [style*="background: linear-gradient(90deg, #FF6B6B"],
+        body.light-theme [style*="background: linear-gradient(90deg, #D31027"] {
+            filter: brightness(0.95) saturate(0.9);
+        }
+        
+        /* Value summary badges */
+        body.light-theme [style*="background: rgba(255,255,255,0.05)"][style*="border-radius"] {
+            background: rgba(99, 102, 241, 0.06) !important;
+            border-color: rgba(99, 102, 241, 0.15) !important;
+        }
+        
+        body.light-theme [style*="color: #38ef7d"],
+        body.light-theme [style*="color:#38ef7d"] {
+            color: #059669 !important;
+        }
+        
+        /* Gray text "Ví dụ" sections */
+        body.light-theme [style*="background:#111"],
+        body.light-theme [style*="background: #111"] {
+            background: #f1f5f9 !important;
+        }
+        
+        body.light-theme [style*="border:1px solid #333"],
+        body.light-theme [style*="border: 1px solid #333"] {
+            border-color: #cbd5e1 !important;
+        }
+        
+        /* Q&A Section */
+        body.light-theme .qa-layout > div { background: #ffffff !important; border-color: #e2e8f0 !important; }
+        body.light-theme .qa-layout input, body.light-theme .qa-layout textarea { background: #f8fafc !important; border-color: #e2e8f0 !important; color: #1e293b !important; }
+        body.light-theme .qa-layout h3 { color: #1e293b; }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 25px;
+            left: 30px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+
+        body.light-theme .theme-toggle {
+            background: #ffffff;
+            border-color: #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Light/Dark Mode">
+        <span id="themeIcon">☀️</span>
+    </button>
+
+    <!-- Navigation -->
+    <div class="nav-dots" id="navDots"></div>
+
+    <!-- Slide 1: Cover -->
+    <div class="slide cover" id="slide1">
+        <div class="cover-bg-anim"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+        <div class="cover-content">
+            <h1 class="gradient-text">HRM SYSTEM 2026</h1>
+            <div class="tagline">"Single Source of Truth cho tài sản lớn nhất của HG Holding - Con Người"</div>
+            <p style="margin-top: 40px; letter-spacing: 2px; font-size: 14px; text-transform: uppercase; opacity: 0.7;">Kick-off Presentation | Q1 2026</p>
+        </div>
+        <div class="slide-number">01 / 25</div>
+    </div>
+
+    <!-- Slide 2: Kick-off Objectives -->
+    <div class="slide" id="slide2">
+        <div class="slide-header">
+            <h2>Nội Dung Buổi Kick-off</h2>
+            <p>Thống nhất Tầm nhìn - Lộ trình - Hành động</p>
+        </div>
+        <div class="pillar-container">
+            <div class="pillar-card">
+                <div class="pillar-icon">🎯</div>
+                <h3>1. Thống Nhất Mục Tiêu<br>(Alignment)</h3>
+                <div class="pillar-list">
+                    <div>Mục tiêu Business (Back-office)</div>
+                    <div>Mục tiêu cốt lõi của HRM Tool</div>
+                </div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">🗺️</div>
+                <h3>2. Nắm Bắt Lộ Trình<br>(Roadmap)</h3>
+                <div class="pillar-list">
+                    <div>Timeline chính tổng thể 2026</div>
+                    <div>Phạm vi 9 Groups tính năng</div>
+                </div>
+            </div>
+            <div class="pillar-card">
+                 <div class="pillar-icon">🚀</div>
+                <h3>3. Chốt Phương Án<br>(Action)</h3>
+                <div class="pillar-list">
+                    <div>Thống nhất Module 1 (US 01-08)</div>
+                    <div><strong>START DỰ ÁN NGAY</strong></div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">02 / 25</div>
+    </div>
+
+    <!-- Slide 3: Current Landscape (The Why) -->
+    
+
+    <!-- Slide 4: Business Goals -->
+    <div class="slide" id="slide4">
+        <div class="slide-header">
+            <h2>Mục Tiêu Doanh Nghiệp (Back-office)</h2>
+            <p>Trở thành "bộ máy hậu cần" tinh gọn, minh bạch</p>
+        </div>
+        <div class="grid-4">
+            <div class="goal-card"><h4>Cost Efficiency</h4><div class="goal-metric">0 <span>đồng</span></div><div class="goal-desc">Chi phí phần mềm 3rd party (HR, Finance, Tech).</div></div>
+            <div class="goal-card"><h4>Compliance</h4><div class="goal-metric">&lt; 5%</div><div class="goal-desc">Tỷ lệ chi tiêu vượt ngân sách/sai quy trình.</div></div>
+            <div class="goal-card"><h4>Operation Efficiency</h4><div class="goal-metric">-30% <span>thời gian</span></div><div class="goal-desc">Xử lý thủ công cho HR & Kế toán.</div></div>
+            <div class="goal-card"><h4>Satisfaction</h4><div class="goal-metric">&gt; 4 <span>điểm</span></div><div class="goal-desc">Chỉ số hài lòng nội bộ.</div></div>
+        </div>
+        <div class="slide-number">04 / 25</div>
+    </div>
+
+    <div class="slide" id="slide3">
+        <div class="slide-header">
+            <h2>Hiện Trạng & Thách Thức</h2>
+            <p>5 "Điểm Nghẽn" & 1 "Hệ Quả" Tất Yếu</p>
+        </div>
+        
+        <div class="problem-grid-3x2">
+            <!-- 1. Data -->
+            <div class="problem-card">
+                <div class="card-header">
+                    <div class="p-icon">📂</div>
+                    <h3>Dữ Liệu Phân Tán</h3>
+                </div>
+                <div class="p-body">
+                    <div class="p-row"><span>HT:</span> Giấy tờ, File cứng, Excel rời rạc</div>
+                    <div class="p-row"><span>HQ:</span> Sai lệch, khó truy vết</div>
+                    <div class="p-risk">⚠️ Rủi Ro Mất Mát Thông Tin</div>
+                </div>
+            </div>
+
+            <!-- 2. Process -->
+            <div class="problem-card">
+                <div class="card-header">
+                    <div class="p-icon">🐌</div>
+                    <h3>Quy Trình Thủ Công</h3>
+                </div>
+                 <div class="p-body">
+                    <div class="p-row"><span>HT:</span> Duyệt mail/chat/giấy tờ/chấm công,...</div>
+                    <div class="p-row"><span>HQ:</span> SLA chậm, trải nghiệm kém, Tốn thời gian</div>
+                    <div class="p-risk">⚠️ Bottleneck Vận Hành</div>
+                </div>
+            </div>
+
+            <!-- 3. Analytics -->
+            <div class="problem-card">
+                <div class="card-header">
+                    <div class="p-icon">📉</div>
+                    <h3>"Mù" Chỉ Số</h3>
+                </div>
+                 <div class="p-body">
+                    <div class="p-row"><span>HT:</span> Không có Dashboard/Real-time</div>
+                    <div class="p-row"><span>HQ:</span> Khó trong việc cập nhật, phân tích nhân sự</div>
+                    <div class="p-risk">⚠️ Quyết Định Khó Khăn</div>
+                </div>
+            </div>
+
+            <!-- 4. Org Structure -->
+            <div class="problem-card">
+                <div class="card-header">
+                    <div class="p-icon">🧩</div>
+                    <h3>Cấu Trúc Rối</h3>
+                </div>
+                 <div class="p-body">
+                    <div class="p-row"><span>HT:</span> Job Title & Phân quyền không đồng bộ</div>
+                    <div class="p-row"><span>HQ:</span> Khó xác nhận thông tin, tìm kiếm trách nhiệm</div>
+                    <div class="p-risk"></div>
+                </div>
+            </div>
+
+            <!-- 5. Integration -->
+            <div class="problem-card">
+                <div class="card-header">
+                    <div class="p-icon">🔗</div>
+                    <h3>Thiếu Tích Hợp</h3>
+                </div>
+                 <div class="p-body">
+                    <div class="p-row"><span>HT:</span> Không đồng bộ với các hệ thống nội bộ</div>
+                    <div class="p-row"><span>HQ:</span> Thay đổi cục bộ tốn thời gian</div>
+                    <div class="p-risk">⚠️ Tốn thời gian, dễ gặp lỗi</div>
+                </div>
+            </div>
+
+            <!-- 6. SUMMARY / CONSEQUENCE (Special Card) -->
+            <div class="problem-card summary-card">
+                <div class="card-header">
+                    <div class="p-icon" style="background: #ff4757; color: white;">🚨</div>
+                    <h3 style="color: #ff4757;">HỆ QUẢ TẤT YẾU</h3>
+                </div>
+                 <div class="p-body">
+                    <div style="font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 10px;">
+                        QUẢN TRỊ CẢM TÍNH<br>TĂNG RỦI RO • LÃNG PHÍ
+                    </div>
+                    <div style="font-size: 12px; opacity: 0.8;">
+                        Không thể mở rộng quy mô nếu tiếp tục vận hành thủ công.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-number">03 / 25</div>
+    </div>
+    <!-- Slide 5: HRM Tool Goals -->
+    <div class="slide" id="slide5">
+        <div class="slide-header">
+            <h2>Mục Tiêu <span class="gradient-text">HRM System</span></h2>
+            <p>Trở thành "Huyết mạch số" của doanh nghiệp, nơi dữ liệu nhân sự chảy xuyên suốt để nuôi dưỡng văn hóa hiệu </p>
+        </div>
+        <div class="pillar-container">
+            <div class="pillar-card">
+                <div class="pillar-icon">💾</div>
+                <h3>Dữ Liệu Tập Trung<br>(Master Data)</h3>
+                <div class="pillar-list"><div>Chuẩn hóa & tập trung 100% dữ liệu nhân sự (Master Data)</div><div>Cơ sở cho BI Dashboard, Rõ ràng minh bạch</div></div>
+            </div>
+            <div class="pillar-card" style="border-color: #667eea;">
+                <div class="pillar-icon" style="background: rgba(102,126,234,0.1); color:#667eea; border-color: #667eea;">⚡</div>
+                <h3>Số Hóa Toàn Diện<br>(Digitization)</h3>
+                <div class="pillar-list"><div>Chấm công / Check công/ Nghỉ phép,...</div><div>Review, đánh giá và thông số nhân sự</div></div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">🤖</div>
+                <h3>Trợ Lý Thông Minh<br>(Smart Support)</h3>
+                <div class="pillar-list"><div>Tra cứu chính sách AI</div><div>Submit request mọi nơi</div></div>
+            </div>
+        </div>
+        <div class="slide-number">05 / 25</div>
+    </div>
+
+    <!-- Slide 6: Annual Roadmap -->
+    <div class="slide" id="slide6">
+        <div class="slide-header">
+            <h2>Lộ Trình Triển Khai 2026</h2>
+            <p>Chiến lược "Cuốn chiếu" & Tối ưu hóa liên tục</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>THÁNG 1/2026</h3>
+                    <h4>GĐ1: Nền Tảng & Số Hóa</h4>
+                    <p>- Module 1: Quản lý Dữ liệu Nhân sự Gốc (Employee Master Data Management)</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>THÁNG 2 - 4/2026</h3>
+                    <h4>GĐ2: Vận Hành & Tinh Chỉnh</h4>
+                    <p>Chuyển giao & Thu thập phản hồi.</p><p>Fix bug & Lên kế hoạch tiếp theo.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>THÁNG 5 - 7/2026</h3>
+                    <h4>GĐ3: Mở Rộng Quy Trình</h4>
+                    <p>- Module 7: CỔNG THÔNG TIN NHÂN VIÊN & AI CHATBOT</p>
+                    <p>- Module 2: Onboarding & Đánh giá Thử việc (Onboarding & Probation Evaluation)</p>
+                    <p>- Module 3: Offboarding & Bàn giao (Offboarding & Handover Management)</p>
+                    <p>- Module 9: Quản lý Thời gian &amp; Chấm công</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>THÁNG 8 - 9/2026</h3>
+                    <h4>GĐ4: Tối Ưu Hóa</h4>
+                    <p>Đánh giá hiệu quả.</p><p>Tinh chỉnh hệ thống.</p>
+                </div>
+            </div>
+             <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>THÁNG 10 - 12/2026</h3>
+                    <h4>GĐ5: Quản Trị Chuyên Sâu</h4>
+                    <p>- Module 8: Quản trị Tuyển dụng (Recruitment Management & Applicant)</p>
+                    <p>- Module 4: Đào tạo & Phát triển Năng lực (Learning & Development - L&D)</p>
+                    <p>- Module 5: Quản trị Hiệu suất (Performance Management - PMS)</p>
+                    <p>- Module 6: Hệ thống Báo cáo & Phân tích HR (HR Analytics & BI Dashboard)</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">06 / 25</div>
+    </div>
+
+    <!-- Slide 7: Module 1 Unified -->
+    <div class="slide" id="slide7">
+        <div class="module-container">
+            <!-- Left Pane: Module Info & Vision -->
+            <div class="module-info">
+                <div class="module-tag">MODULE 01</div>
+                <h2 class="module-title">Quản Lý Dữ Liệu Nhân Sự Gốc</h2>
+                <div class="module-subtitle">Employee Master Data Management</div>
+                
+                <!-- Inspiring Message -->
+                <div class="module-message">
+                    "Chúng ta không chỉ số hóa hồ sơ, mà đang xây dựng <span class="highlight-text">Trái Tim Dữ Liệu</span> cho toàn bộ hệ thống HRM."
+                </div>
+                
+                <div class="module-commitment">
+                    <div style="margin-bottom:10px;">1. <strong>Tập trung 100%</strong> hồ sơ nhân viên vào một hệ thống duy nhất.</div>
+                    <div style="margin-bottom:10px;">2. <strong>Chuẩn hóa</strong> cấu trúc dữ liệu nhân sự theo tiêu chuẩn & sơ đồ tổ chức.</div>
+                    <div style="margin-bottom:10px;">3. Đảm bảo tính <strong>chính xác và nhất quán</strong> của dữ liệu.</div>
+                    <div>4. Hỗ trợ <strong>tra cứu nhanh</strong> và báo cáo <strong>real-time</strong>.</div>
+                </div>
+
+                <div class="goals-bar">
+                    <div class="goal-item" title="Tập trung 100%">🎯 Centralized</div>
+                    <div class="goal-item" title="Chuẩn hóa">📏 Standardized</div>
+                    <div class="goal-item" title="Chính xác">✅ Accurate</div>
+                    <div class="goal-item" title="Tức thì">⚡ Real-time</div>
+                </div>
+            </div>
+
+            <!-- Right Pane: Interactive Epics -->
+            <div class="module-epics">
+                <!-- Epic 1 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box">👤</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 01: QUẢN LÝ HỒ SƠ (PROFILE)</div>
+                            <div class="epic-desc">Create, Update, View 360°, Documents</div>
+                        </div>
+                         <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>HR:</strong> Tạo mới & Quản lý hồ sơ nhân sự End-to-End.</li>
+                            <li>• <strong>Dữ liệu:</strong> Validate chặt chẽ, không thiếu trường bắt buộc.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 2 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box">🏢</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 02: QUẢN LÝ TỔ CHỨC (ORG)</div>
+                             <div class="epic-desc">Org Chart, Job Titles, Job Levels</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Cơ cấu:</strong> Phản ánh đúng sơ đồ tổ chức thực tế (5 cấp).</li>
+                            <li>• <strong>Chức danh:</strong> Chuẩn hóa theo Job Level toàn cầu.</li>
+                            <li>• <strong>Hiển thị:</strong> Cây sơ đồ trực quan, dễ dàng tra cứu.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 3 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box">✒️</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 03: HỢP ĐỒNG (CONTRACTS)</div>
+                            <div class="epic-desc">Digital Contracts, Renewal Alerts</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Số hóa:</strong> Lưu trữ tập trung Hợp đồng & Phụ lục.</li>
+                            <li>• <strong>Cảnh báo:</strong> Thông báo hết hạn chính xác cho HR & Manager.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">07 / 25</div>
+    </div>
+
+    <!-- Slide 8: Module 2 Unified -->
+    <div class="slide" id="slide8">
+        <div class="module-container">
+            <!-- Left Pane: Module Info & Vision -->
+            <div class="module-info">
+                <div class="module-tag" style="background: linear-gradient(90deg, #11998e, #38ef7d);">MODULE 02</div>
+                <h2 class="module-title">Onboarding & Đánh Giá Thử Việc</h2>
+                <div class="module-subtitle">Onboarding & Probation Evaluation</div>
+                
+                <!-- Inspiring Message -->
+                <div class="module-message" style="border-left-color: #38ef7d;">
+                    "Biến những ngày đầu tiên thành <span class="highlight-text" style="color:#38ef7d;">ấn tượng chuyên nghiệp</span>, giúp nhân tài hòa nhập & tỏa sáng nhanh nhất."
+                </div>
+                
+                <div class="module-commitment">
+                    <div style="margin-bottom:10px;">1. <strong>100% nhân viên mới</strong> hoàn thành checklist onboarding trong 7 ngày đầu.</div>
+                    <div style="margin-bottom:10px;">2. <strong>Số hóa 100%</strong> quy trình đánh giá thử việc (Online).</div>
+                    <div style="margin-bottom:10px;">3. Thu thập <strong>feedback cải thiện</strong> từ nhân viên mới.</div>
+                    <div>4. Rút ngắn <strong>30% thời gian</strong> đạt năng suất (Time-to-Productivity).</div>
+                </div>
+
+                <div class="goals-bar">
+                    <div class="goal-item" title="Checklist" style="border-color: #11998e; color:#a8ff78;">📋 100% Checklist</div>
+                    <div class="goal-item" title="Productivity" style="border-color: #11998e; color:#a8ff78;">🚀 -30% Time</div>
+                    <div class="goal-item" title="Digital" style="border-color: #11998e; color:#a8ff78;">💻 Online Flow</div>
+                </div>
+            </div>
+
+            <!-- Right Pane: Interactive Epics -->
+            <div class="module-epics">
+                <!-- Epic 1 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #38ef7d;">📋</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 01: CHECKLIST ONBOARDING</div>
+                            <div class="epic-desc">Tasks, Mentor Assignment, Asset handover</div>
+                        </div>
+                         <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Quy trình:</strong> Tự động giao việc khi có nhân sự mới.</li>
+                            <li>• <strong>Checklist:</strong> Tài khoản, Tiện ích, Quy định, Đào tạo hội nhập.</li>
+                            <li>• <strong>Mentor:</strong> Chỉ định người hướng dẫn & theo dõi tiến độ.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 2 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #38ef7d;">📝</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 02: ĐÁNH GIÁ THỬ VIỆC ONLINE</div>
+                             <div class="epic-desc">Probation Review Workflow</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Luồng duyệt:</strong> Nhân viên tự đánh giá → Mentor → Line Manager → HR.</li>
+                            <li>• <strong>Tiêu chí:</strong> Form đánh giá năng lực & độ phù hợp văn hóa.</li>
+                            <li>• <strong>Nhắc nhở:</strong> Thông báo deadline đánh giá tự động.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 3 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #38ef7d;">⭐</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 03: KHẢO SÁT TRẢI NGHIỆM (SURVEY)</div>
+                            <div class="epic-desc">Employee Feedback & NPS</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Feedback:</strong> Thu thập ý kiến về quy trình tuyển dụng & hội nhập.</li>
+                            <li>• <strong>NPS:</strong> Đo lường mức độ hài lòng của nhân viên mới.</li>
+                            <li>• <strong>Cải tiến:</strong> Báo cáo điểm nóng cần khắc phục.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 4 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #38ef7d;">⚖️</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 04: QUYẾT ĐỊNH KẾT QUẢ</div>
+                            <div class="epic-desc">Official Offer / Termination</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Ký chính thức:</strong> Kích hoạt luồng ký HĐLĐ chính thức.</li>
+                            <li>• <strong>Gia hạn/Dừng:</strong> Xử lý các trường hợp ngoại lệ.</li>
+                            <li>• <strong>Thông báo:</strong> Gửi email thông báo kết quả chuyên nghiệp.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">08 / 25</div>
+    </div>
+
+    <!-- Slide 9: Module 3 Unified -->
+    <div class="slide" id="slide9">
+        <div class="module-container">
+            <!-- Left Pane: Module Info & Vision -->
+            <div class="module-info">
+                <div class="module-tag" style="background: linear-gradient(90deg, #f2994a, #f2c94c);">MODULE 03</div>
+                <h2 class="module-title">Offboarding & Bàn Giao</h2>
+                <div class="module-subtitle">Offboarding & Handover Management</div>
+                
+                <!-- Inspiring Message -->
+                <div class="module-message" style="border-left-color: #f2994a;">
+                    "Kết thúc hành trình một cách <span class="highlight-text" style="color:#f2994a;">chuyên nghiệp & bảo mật</span>, giữ gìn uy tín thương hiệu tuyển dụng."
+                </div>
+                
+                <div class="module-commitment">
+                    <div style="margin-bottom:10px;">1. <strong>100% nhân viên</strong> nghỉ việc hoàn thành checklist bàn giao đầy đủ.</div>
+                    <div style="margin-bottom:10px;">2. <strong>Vô hiệu hóa</strong> tài khoản đúng ngày nghỉ việc (Auto).</div>
+                    <div style="margin-bottom:10px;">3. <strong>100% tài sản</strong> công ty được thu hồi & ghi nhận.</div>
+                    <div>4. Thời gian hoàn thành Offboarding <strong>≤ 5 ngày</strong> làm việc.</div>
+                </div>
+
+                <div class="goals-bar">
+                    <div class="goal-item" title="Checklist" style="border-color: #f2994a; color:#f2c94c;">📋 100% Handover</div>
+                    <div class="goal-item" title="Speed" style="border-color: #f2994a; color:#f2c94c;">⚡ ≤ 5 Days</div>
+                    <div class="goal-item" title="Security" style="border-color: #f2994a; color:#f2c94c;">🔒 Auto Lock</div>
+                </div>
+            </div>
+
+            <!-- Right Pane: Interactive Epics -->
+            <div class="module-epics">
+                <!-- Epic 1 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #f2994a;">📝</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 01: QUẢN LÝ ĐƠN XIN NGHỈ VIỆC</div>
+                            <div class="epic-desc">Resignation Workflow & Exit Interview</div>
+                        </div>
+                         <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Quy trình:</strong> Nhân viên nộp đơn → Manager duyệt → HR xác nhận.</li>
+                            <li>• <strong>Thảo luận:</strong> Mời phỏng vấn Exit Interview.</li>
+                            <li>• <strong>Chốt ngày:</strong> Xác định Last Working Day chính xác.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 2 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #f2994a;">📦</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 02: BÀN GIAO TÀI SẢN & CÔNG VIỆC</div>
+                             <div class="epic-desc">Asset & Task Handover Checklist</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Kiểm kê:</strong> Danh sách tài sản đang giữ (Laptop, Thẻ, ...).</li>
+                            <li>• <strong>Công việc:</strong> Bàn giao dự án, tài liệu, quyền truy cập folder.</li>
+                            <li>• <strong>Xác nhận:</strong> Các bên ký xác nhận online (IT, Manager, HR).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 3 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #f2994a;">🚫</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 03: CHẤM DỨT TRUY CẬP HỆ THỐNG</div>
+                            <div class="epic-desc">Access Revocation & Security</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Tự động:</strong> Khóa tài khoản HRM, Email, VPN vào đúng 17h30 ngày cuối.</li>
+                            <li>• <strong>Thông báo:</strong> Gửi email chia tay & hướng dẫn nhận lương/trợ cấp cuối.</li>
+                            <li>• <strong>Lưu trữ:</strong> Đóng hồ sơ, chuyển trạng thái "Đã nghỉ việc".</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">09 / 25</div>
+    </div>
+
+    <!-- Slide 10: Module 4 Unified -->
+    <div class="slide" id="slide10">
+        <div class="module-container">
+            <!-- Left Pane: Module Info & Vision -->
+            <div class="module-info">
+                <div class="module-tag" style="background: linear-gradient(90deg, #ec008c, #fc6767);">MODULE 04</div>
+                <h2 class="module-title">Đào Tạo & Phát Triển (L&D)</h2>
+                <div class="module-subtitle">Learning & Development</div>
+                
+                <!-- Inspiring Message -->
+                <div class="module-message" style="border-left-color: #ec008c;">
+                    "Xây dựng đội ngũ kế thừa vững mạnh thông qua <span class="highlight-text" style="color:#fc6767;">lộ trình phát triển năng lực</span> rõ ràng & minh bạch."
+                </div>
+                
+                <div class="module-commitment">
+                    <div style="margin-bottom:10px;">1. <strong>80% vị trí</strong> có định nghĩa Khung năng lực (Competency Framework).</div>
+                    <div style="margin-bottom:10px;">2. <strong>Số hóa 100%</strong> quản lý danh mục khóa đào tạo.</div>
+                    <div style="margin-bottom:10px;">3. Theo dõi <strong>100% kết quả</strong> & cập nhật hồ sơ năng lực.</div>
+                    <div>4. Giảm <strong>50% thời gian</strong> lập kế hoạch đào tạo thủ công.</div>
+                </div>
+
+                <div class="goals-bar">
+                    <div class="goal-item" title="Competency" style="border-color: #ec008c; color:#fc6767;">🧠 80% Framework</div>
+                    <div class="goal-item" title="Digital" style="border-color: #ec008c; color:#fc6767;">💻 100% Online</div>
+                    <div class="goal-item" title="Efficiency" style="border-color: #ec008c; color:#fc6767;">⚡ -50% Time</div>
+                </div>
+            </div>
+
+            <!-- Right Pane: Interactive Epics -->
+            <div class="module-epics">
+                <!-- Epic 1 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #ec008c;">🧠</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 01: KHUNG NĂNG LỰC (COMPETENCY)</div>
+                            <div class="epic-desc">Dictionary, Levels & Job Mapping</div>
+                        </div>
+                         <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Từ điển:</strong> Xây dựng từ điển năng lực (Kiến thức, Kỹ năng, Thái độ).</li>
+                            <li>• <strong>Level:</strong> Định nghĩa các mức độ (Level 1 - Level 5) cho từng năng lực.</li>
+                            <li>• <strong>Mapping:</strong> Gán năng lực tiêu chuẩn cho từng vị trí (Job Title).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 2 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #ec008c;">📚</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 02: QUẢN LÝ THƯ VIỆN KHÓA HỌC</div>
+                             <div class="epic-desc">Course Catalog & Details</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Danh mục:</strong> Quản lý khóa học nội bộ (Internal) & bên ngoài (External).</li>
+                            <li>• <strong>Chi tiết:</strong> Nội dung, giảng viên, thời lượng, chi phí dự kiến.</li>
+                            <li>• <strong>Tài liệu:</strong> Lưu trữ tài liệu khóa học & link bài giảng online.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 3 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #ec008c;">📅</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 03: LẬP KẾ HOẠCH ĐÀO TẠO</div>
+                            <div class="epic-desc">Planning & Budgeting</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Kế hoạch:</strong> Lập plan đào tạo theo Năm/Quý/Tháng.</li>
+                            <li>• <strong>Ngân sách:</strong> Dự trù ngân sách & Phê duyệt kế hoạch.</li>
+                            <li>• <strong>Đăng ký:</strong> CBNV đăng ký tham gia hoặc được Manager chỉ định.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 4 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #ec008c;">🏅</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 04: GHI NHẬN KẾT QUẢ ĐÀO TẠO</div>
+                            <div class="epic-desc">Results, Feedback & Profile Update</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Ghi nhận:</strong> Điểm danh, Kết quả bài test, Chứng chỉ hoàn thành.</li>
+                            <li>• <strong>Đánh giá:</strong> Học viên đánh giá chất lượng khóa học sau đào tạo.</li>
+                            <li>• <strong>Hồ sơ:</strong> Cập nhật lịch sử đào tạo vào Hồ sơ nhân sự (Profile).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10 / 25</div>
+    </div>
+
+    <!-- Slide 11: Module 5 Unified -->
+    <div class="slide" id="slide11">
+        <div class="module-container">
+            <!-- Left Pane: Module Info & Vision -->
+            <div class="module-info">
+                <div class="module-tag" style="background: linear-gradient(90deg, #00f260, #0575e6);">MODULE 05</div>
+                <h2 class="module-title">Quản Trị Hiệu Suất (PMS)</h2>
+                <div class="module-subtitle">Performance Management System</div>
+                
+                <!-- Inspiring Message -->
+                <div class="module-message" style="border-left-color: #00f260;">
+                    "Chuyển dịch từ tư duy <i>Xếp loại cuối năm</i> sang văn hóa <span class="highlight-text" style="color:#00f260;">Phản hồi liên tục & High Performance</span>."
+                </div>
+                
+                <div class="module-commitment">
+                    <div style="margin-bottom:10px;">1. <strong>100% nhân viên</strong> có bộ mục tiêu (KPI/OKR). <br><span style="font-size:12px; opacity:0.6; font-style:italic;">*(Đang cân nhắc lộ trình áp dụng)*</span></div>
+                    <div style="margin-bottom:10px;">2. Hoàn thành kỳ đánh giá <strong>đúng hạn 100%</strong> (On-time).</div>
+                    <div style="margin-bottom:10px;">3. Thiết lập cơ chế <strong>Continuous Feedback</strong> thay vì chỉ review 1 lần/năm.</div>
+                </div>
+
+                <div class="goals-bar">
+                    <div class="goal-item" title="Culture" style="border-color: #00f260; color:#0575e6;">🗣 Continuous Feedback</div>
+                    <div class="goal-item" title="Speed" style="border-color: #00f260; color:#0575e6;">⚡ On-time</div>
+                    <div class="goal-item" title="Goal" style="border-color: #00f260; color:#0575e6;">🎯 KPI/OKR</div>
+                </div>
+            </div>
+
+            <!-- Right Pane: Interactive Epics -->
+            <div class="module-epics">
+                <!-- Epic 1 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #0575e6;">⚙️</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 01: THIẾT LẬP KHUNG QUẢN TRỊ</div>
+                            <div class="epic-desc">Framework Setup, Criteria & Calibration</div>
+                        </div>
+                         <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Thư viện:</strong> Ngân hàng KPI/Năng lực cốt lõi.</li>
+                            <li>• <strong>Cấu hình:</strong> Tỷ trọng đánh giá, Thang điểm, Xếp loại (Bell Curve).</li>
+                            <li>• <strong>Chu kỳ:</strong> Thiết lập kỳ đánh giá (Tháng/Quý/Năm).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 2 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #0575e6;">🔄</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 02: QUY TRÌNH ĐÁNH GIÁ</div>
+                             <div class="epic-desc">Review Workflow 360°</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Thực hiện:</strong> Tự đánh giá → Quản lý đánh giá → Hiệu chỉnh (Calibration).</li>
+                            <li>• <strong>Phản hồi:</strong> Ghi nhận feedback 1-1 giữa Manager & Staff.</li>
+                            <li>• <strong>Kết quả:</strong> Phê duyệt kết quả cuối cùng & ghi nhận vào hồ sơ.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">11 / 25</div>
+    </div>
+
+    <!-- Slide 12: Module 6 Unified -->
+    <div class="slide" id="slide12">
+        <div class="module-container">
+            <!-- Left Pane: Module Info & Vision -->
+            <div class="module-info">
+                <div class="module-tag" style="background: linear-gradient(90deg, #8E2DE2, #4A00E0);">MODULE 06</div>
+                <h2 class="module-title">Hệ Thống Báo Cáo & Phân Tích (BI)</h2>
+                <div class="module-subtitle">HR Analytics & BI Dashboard</div>
+                
+                <!-- Inspiring Message -->
+                <div class="module-message" style="border-left-color: #8E2DE2;">
+                    "Chuyển hóa dữ liệu thô thành <span class="highlight-text" style="color:#a469ff;">quyết định chiến lược</span>. HR không nói bằng cảm tính, HR nói bằng số liệu."
+                </div>
+                
+                <div class="module-commitment">
+                    <div style="margin-bottom:10px;">1. Giảm <strong>90% thời gian</strong> làm báo cáo thủ công của HR.</div>
+                    <div style="margin-bottom:10px;">2. <strong>Dự báo xu hướng</strong> (Turnover, Cost) để hành động sớm.</div>
+                    <div style="margin-bottom:10px;">3. Xác định chính xác <strong>Top Talents</strong> & <strong>Underperformers</strong>.</div>
+                </div>
+
+                <div class="goals-bar">
+                    <div class="goal-item" title="Efficiency" style="border-color: #8E2DE2; color:#a469ff;">⚡ -90% Manual Work</div>
+                    <div class="goal-item" title="Insight" style="border-color: #8E2DE2; color:#a469ff;">🔮 Forecast</div>
+                    <div class="goal-item" title="Talent" style="border-color: #8E2DE2; color:#a469ff;">💎 Top Talent</div>
+                </div>
+            </div>
+
+            <!-- Right Pane: Interactive Epics -->
+            <div class="module-epics">
+                <!-- Epic 1 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #8E2DE2;">📊</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 01: DASHBOARD SỨC KHỎE NHÂN SỰ</div>
+                            <div class="epic-desc">Headcount, Turnover, Demographics</div>
+                        </div>
+                         <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Tổng quan:</strong> Biến động nhân sự (Tăng/Giảm), Tỷ lệ nghỉ việc (Turnover Rate).</li>
+                            <li>• <strong>Phân bố:</strong> Tháp tuổi, thâm niên, trình độ, giới tính.</li>
+                            <li>• <strong>Cảnh báo:</strong> Các chỉ số "Báo động đỏ" cần can thiệp ngay.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 2 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #8E2DE2;">💰</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 02: PHÂN TÍCH CHI PHÍ NHÂN SỰ</div>
+                             <div class="epic-desc">Cost Analysis & Budgeting</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Chi phí:</strong> Tổng quỹ lương, thưởng, phúc lợi, BHXH theo phòng ban.</li>
+                            <li>• <strong>Hiệu quả:</strong> Doanh thu trên nhân sự (Revenue per Employee).</li>
+                            <li>• <strong>Tuyển dụng:</strong> Chi phí tuyển dụng trên một nhân sự (Cost per Hire).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 3 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #8E2DE2;">🧩</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 03: MA TRẬN HIỆU SUẤT & NHÂN TÀI</div>
+                             <div class="epic-desc">9-Box Grid & Succession Planning</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>9-Box Grid:</strong> Phân loại nhân sự theo Hiệu suất (Performance) & Tiềm năng (Potential).</li>
+                            <li>• <strong>Quy hoạch:</strong> Xác định đội ngũ kế thừa (Successors) cho các vị trí Key.</li>
+                            <li>• <strong>Action Plan:</strong> Kế hoạch phát triển riêng cho từng nhóm (Retain, Develop, Move).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">12 / 25</div>
+    </div>
+
+    <!-- Slide 13: Module 7 Unified -->
+    <div class="slide" id="slide13">
+        <div class="module-container">
+            <!-- Left Pane: Module Info & Vision -->
+            <div class="module-info">
+                <div class="module-tag" style="background: linear-gradient(90deg, #2193b0, #6dd5ed);">MODULE 07</div>
+                <h2 class="module-title">Cổng Thông Tin & AI Chatbot</h2>
+                <div class="module-subtitle">ESS Portal & AI Assistant</div>
+                
+                <!-- Inspiring Message -->
+                <div class="module-message" style="border-left-color: #2193b0;">
+                    "Trao quyền tự chủ cho nhân viên với trải nghiệm <span class="highlight-text" style="color:#6dd5ed;">All-in-One</span> & Hỗ trợ tức thì 24/7 bởi AI."
+                </div>
+                
+                <div class="module-commitment">
+                    <div style="margin-bottom:10px;">1. <strong>90% nhân viên</strong> truy cập và sử dụng Portal hàng ngày.</div>
+                    <div style="margin-bottom:10px;">2. AI Chatbot giải quyết <strong>80% câu hỏi</strong> thường gặp (Policy & Data).</div>
+                    <div style="margin-bottom:10px;">3. Thời gian phản hồi trung bình <strong>&lt; 10 giây</strong>.</div>
+                    <div>4. <strong>Tích hợp toàn diện</strong> (Leave, Claim, Payslip) vào một Super App.</div>
+                </div>
+
+                <div class="goals-bar">
+                    <div class="goal-item" title="Adoption" style="border-color: #2193b0; color:#6dd5ed;">📱 90% Usage</div>
+                    <div class="goal-item" title="AI" style="border-color: #2193b0; color:#6dd5ed;">🤖 80% AI Answer</div>
+                    <div class="goal-item" title="Speed" style="border-color: #2193b0; color:#6dd5ed;">⚡ &lt; 10s</div>
+                </div>
+            </div>
+
+            <!-- Right Pane: Interactive Epics -->
+            <div class="module-epics">
+                <!-- Epic 1 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #2193b0;">📱</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 01: CỔNG THÔNG TIN TỰ PHỤC VỤ (ESS)</div>
+                            <div class="epic-desc">Unified Employee Portal / Super App</div>
+                        </div>
+                         <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Trung tâm:</strong> Truy cập tất cả ứng dụng HRM (Nghỉ phép, Lương, Đào tạo) tại 1 nơi.</li>
+                            <li>• <strong>Cá nhân hóa:</strong> Dashboard hiển thị thông tin quan trọng riêng biệt cho từng User.</li>
+                            <li>• <strong>Mobile First:</strong> Trải nghiệm đồng nhất trên Mobile App & Web.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 2 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #2193b0;">🤖</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 02: TRỢ LÝ ẢO AI (AI ASSISTANT)</div>
+                             <div class="epic-desc">Smart Q&A & Support</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Hỏi đáp Policy:</strong> Giải đáp thắc mắc về Chế độ, Phúc lợi, Quy định tự động.</li>
+                            <li>• <strong>Truy vấn Data:</strong> Tra cứu nhanh số ngày phép còn lại, Lương, KPI qua chat.</li>
+                            <li>• <strong>Hỗ trợ:</strong> Hướng dẫn quy trình & thủ tục realtime.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 3 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #2193b0;">🎧</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 03: TRUNG TÂM DỊCH VỤ (SERVICE CENTER)</div>
+                             <div class="epic-desc">HR Helpdesk & Request Ticketing</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Gửi yêu cầu:</strong> Tạo ticket hỗ trợ cho các vấn đề phát sinh (IT, Admin, HR).</li>
+                            <li>• <strong>Theo dõi:</strong> Tracking trạng thái xử lý yêu cầu minh bạch (SLA).</li>
+                            <li>• <strong>Kho tri thức:</strong> Knowledge Base tích hợp để tự tìm kiếm giải pháp.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">13 / 25</div>
+    </div>
+
+    <!-- Slide 14: Module 8 Unified -->
+    <div class="slide" id="slide14">
+        <div class="module-container">
+            <!-- Left Pane: Module Info & Vision -->
+            <div class="module-info">
+                <div class="module-tag" style="background: linear-gradient(90deg, #D31027, #EA384D);">MODULE 08</div>
+                <h2 class="module-title">Quản Trị Tuyển Dụng (ATS)</h2>
+                <div class="module-subtitle">Recruitment Management & ATS</div>
+                
+                <!-- Inspiring Message -->
+                <div class="module-message" style="border-left-color: #D31027;">
+                    "Thu hút nhân tài không chỉ là tuyển dụng, mà là <span class="highlight-text" style="color:#EA384D;">xây dựng vị thế cạnh tranh</span> trên thị trường lao động."
+                </div>
+                
+                <div class="module-commitment">
+                    <div style="margin-bottom:10px;">1. Tự động hóa thu thập/sàng lọc | <strong>100% hồ sơ</strong> về Focus DB.</div>
+                    <div style="margin-bottom:10px;">2. Rút ngắn <strong>Time-to-hire</strong> từ 45 ngày ➔ <strong>30 ngày</strong>.</div>
+                    <div style="margin-bottom:10px;">3. Tăng trải nghiệm ứng viên: <strong>Phản hồi 100%</strong> (kể cả trượt).</div>
+                    <div>4. Chuẩn hóa đánh giá: <strong>100% ứng viên</strong> có Scorecard.</div>
+                </div>
+
+                <div class="goals-bar">
+                    <div class="goal-item" title="Speed" style="border-color: #D31027; color:#EA384D;">⚡ 30 Days</div>
+                    <div class="goal-item" title="Centralized" style="border-color: #D31027; color:#EA384D;">🎯 Centralized DB</div>
+                    <div class="goal-item" title="Quality" style="border-color: #D31027; color:#EA384D;">⭐ Scorecard</div>
+                </div>
+            </div>
+
+            <!-- Right Pane: Interactive Epics -->
+            <div class="module-epics">
+                <!-- Epic 1 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #D31027;">📅</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 01: LẬP KẾ HOẠCH TUYỂN DỤNG</div>
+                            <div class="epic-desc">Headcount Planning & Budgeting</div>
+                        </div>
+                         <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Yêu cầu:</strong> Phòng ban đăng ký định biên & nhu cầu tuyển dụng.</li>
+                            <li>• <strong>Ngân sách:</strong> Phê duyệt ngân sách tuyển dụng & kênh nguồn (Sourcing Channel).</li>
+                            <li>• <strong>JD:</strong> Chuẩn hóa bản mô tả công việc (Job Description) từ thư viện.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 2 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #D31027;">🤝</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 02: TUYỂN CHỌN & PHỎNG VẤN</div>
+                             <div class="epic-desc">Sourcing, Screening & Interview</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Sourcing:</strong> Thu thập CV tự động từ Email/LinkedIn/TopDev về hệ thống.</li>
+                            <li>• <strong>Sàng lọc:</strong> Phân loại CV tự động, dán nhãn (Tagging) ứng viên tiềm năng.</li>
+                            <li>• <strong>Phỏng vấn:</strong> Lên lịch, gửi thư mời & đánh giá theo bảng điểm (Scorecard).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 3 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #D31027;">💌</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 03: TUYỂN DỤNG (HIRING & OFFER)</div>
+                             <div class="epic-desc">Offer Management & Pre-onboarding</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Offer Letter:</strong> Tạo & Gửi thư mời nhận việc chuyên nghiệp (Digital Offer).</li>
+                            <li>• <strong>Deal Lương:</strong> Quản lý lịch sử đàm phán lương & phúc lợi.</li>
+                            <li>• <strong>Chuyển đổi:</strong> Chuyển hồ sơ ứng viên thành nhân viên chính thức (Sync to Module 1).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">14 / 25</div>
+    </div>
+
+    <!-- Slide 14: Module 9 Unified -->
+    <div class="slide" id="slide15">
+        <div class="module-container">
+            <!-- Left Pane: Module Info & Vision -->
+            <div class="module-info">
+                <div class="module-tag" style="background: linear-gradient(90deg, #FF8008, #FFC837);">MODULE 09</div>
+                <h2 class="module-title">Quản Lý Thời Gian & Chấm Công</h2>
+                <div class="module-subtitle">Time Attendance & Leave Management</div>
+                
+                <!-- Inspiring Message -->
+                <div class="module-message" style="border-left-color: #FF8008;">
+                    "Chấm công kỷ nguyên số: <span class="highlight-text" style="color:#FFC837;">Real-time - Paperless - Compliant</span>. Minh bạch từng phút giây cống hiến."
+                </div>
+                
+                <div class="module-commitment">
+                    <div style="margin-bottom:10px;">1. Tổng hợp dữ liệu <strong>Real-time 100%</strong> từ mọi nguồn (App/GPS/Máy).</div>
+                    <div style="margin-bottom:10px;">2. Loại bỏ hoàn toàn giấy tờ: <strong>100% Request Online</strong> (Leave/OT).</div>
+                    <div style="margin-bottom:10px;">3. Rút ngắn chốt công từ 5 ngày ➔ <strong>1 ngày</strong> (&lt; 5 phút tự động).</div>
+                    <div>4. Tuân thủ tuyệt đối: <strong>Cảnh báo OT</strong>, tính đúng luật, 0% rủi ro pháp lý.</div>
+                </div>
+
+                <div class="goals-bar">
+                    <div class="goal-item" title="Speed" style="border-color: #FF8008; color:#FFC837;">⚡ &lt; 5 Mins</div>
+                    <div class="goal-item" title="Paperless" style="border-color: #FF8008; color:#FFC837;">📄 0% Paper</div>
+                    <div class="goal-item" title="Compliance" style="border-color: #FF8008; color:#FFC837;">⚖️ Compliant</div>
+                </div>
+            </div>
+
+            <!-- Right Pane: Interactive Epics -->
+            <div class="module-epics">
+                <!-- Epic 1 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #FF8008;">⚙️</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 01: THIẾT LẬP QUY TẮC (POLICY CONFIG)</div>
+                            <div class="epic-desc">Shifts, Rules, OT Policy</div>
+                        </div>
+                         <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Ca làm việc:</strong> Thiết lập đa dạng ca (Hành chính, Ca kíp, Flexible).</li>
+                            <li>• <strong>Quy tắc:</strong> Cấu hình đi trễ/về sớm, làm tròn giờ, quy tắc OT.</li>
+                            <li>• <strong>Chính sách:</strong> Áp dụng tự động luật lao động & nội quy công ty vào hệ thống.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 2 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #FF8008;">⏱️</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 02: THU THẬP DỮ LIỆU CHẤM CÔNG</div>
+                             <div class="epic-desc">Data Collection & Sync</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Đa kênh:</strong> Sync dữ liệu từ Máy chấm công (FaceID/Vân tay), Mobile App (GPS/Wifi).</li>
+                            <li>• <strong>Real-time:</strong> Cập nhật dữ liệu vào/ra tức thì để user tự theo dõi.</li>
+                            <li>• <strong>Xử lý:</strong> Tự động ghép cặp (Check-in/out), tính công nhật & giờ làm thực tế.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 3 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #FF8008;">🏖️</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">EPIC 03: QUẢN LÝ NGHỈ PHÉP (LEAVE)</div>
+                             <div class="epic-desc">Leave Balance & Workflow</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Quỹ phép:</strong> Tự động cộng/trừ phép năm, phép bù, nghỉ ốm.</li>
+                            <li>• <strong>Quy trình:</strong> Đăng ký nghỉ & Phê duyệt online qua App.</li>
+                            <li>• <strong>Tích hợp:</strong> Dữ liệu nghỉ được đồng bộ thẳng vào bảng công tháng.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">15 / 25</div>
+    </div>
+
+
+    <!-- Slide 16: Foundation - The Problem (NEW) -->
+    <div class="slide" id="slide16">
+        <div class="module-container" style="flex-direction: column; padding: 40px 60px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div class="module-tag" style="background: linear-gradient(90deg, #FF6B6B, #c0392b); margin: 0 auto 10px; display: inline-block;">THE FOUNDATION</div>
+                <h2 class="module-title" style="font-size: 32px; margin-bottom: 10px;">Tại Sao Cần "Foundation"?</h2>
+                <div class="module-subtitle">Những Vấn Đề Cốt Lõi Cần Giải Quyết</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; max-width: 900px; margin: 0 auto;">
+                <!-- Problem 1 -->
+                <div class="problem-card" style="background: rgba(255,107,107,0.1); border: 1px solid rgba(255,107,107,0.3); border-radius: 12px; padding: 20px;">
+                    <div style="font-size: 28px; margin-bottom: 10px;">🏢❌</div>
+                    <h3 style="color: #FF6B6B; font-size: 16px; margin-bottom: 8px;">Không Có Sơ Đồ Tổ Chức</h3>
+                    <p style="font-size: 13px; color: #aaa; line-height: 1.5;">HR Admin không có công cụ để trực quan hóa cơ cấu tổ chức theo chuẩn HG Holding (Tập đoàn → Khối → Công ty → Phòng ban).</p>
+                </div>
+
+                <!-- Problem 2 -->
+                <div class="problem-card" style="background: rgba(255,107,107,0.1); border: 1px solid rgba(255,107,107,0.3); border-radius: 12px; padding: 20px;">
+                    <div style="font-size: 28px; margin-bottom: 10px;">🔐❓</div>
+                    <h3 style="color: #FF6B6B; font-size: 16px; margin-bottom: 8px;">Phân Quyền Mơ Hồ</h3>
+                    <p style="font-size: 13px; color: #aaa; line-height: 1.5;">Việc phân quyền, đồng bộ hệ thống nội bộ không thể thực hiện vì thiếu cơ cấu tổ chức rõ ràng làm cơ sở.</p>
+                </div>
+
+                <!-- Problem 3 -->
+                <div class="problem-card" style="background: rgba(255,107,107,0.1); border: 1px solid rgba(255,107,107,0.3); border-radius: 12px; padding: 20px;">
+                    <div style="font-size: 28px; margin-bottom: 10px;">📛🔀</div>
+                    <h3 style="color: #FF6B6B; font-size: 16px; margin-bottom: 8px;">Chức Danh Không Chuẩn</h3>
+                    <p style="font-size: 13px; color: #aaa; line-height: 1.5;">Cùng một vị trí có nhiều tên gọi khác nhau (Developer vs Lập trình viên vs Software Engineer). Mỗi phòng ban tự đặt tên.</p>
+                </div>
+
+                <!-- Problem 4 -->
+                <div class="problem-card" style="background: rgba(255,107,107,0.1); border: 1px solid rgba(255,107,107,0.3); border-radius: 12px; padding: 20px;">
+                    <div style="font-size: 28px; margin-bottom: 10px;">📊🚫</div>
+                    <h3 style="color: #FF6B6B; font-size: 16px; margin-bottom: 8px;">Khó Báo Cáo & Thống Kê</h3>
+                    <p style="font-size: 13px; color: #aaa; line-height: 1.5;">Không thể phân loại và thống kê nhân viên theo chức năng công việc hoặc cấp bậc. Không rõ Job Family để xây lộ trình.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; text-align: center; font-style: italic; color: #888; border: 1px dashed #555; padding: 15px 30px; border-radius: 20px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                "Đây là bước <strong style="color:#FF6B6B;">nền tảng</strong>, ảnh hưởng đến <strong>tất cả</strong> các quy trình tiếp theo: phân quyền, chấm công, tính lương, báo cáo."
+            </div>
+        </div>
+        <div class="slide-number">16 / 25</div>
+    </div>
+
+    <!-- Slide 17: Foundation - The Solution (NEW) -->
+    <div class="slide" id="slide17">
+        <div class="module-container" style="flex-direction: column; padding: 40px 60px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div class="module-tag" style="background: linear-gradient(90deg, #11998e, #38ef7d); margin: 0 auto 10px; display: inline-block;">THE FOUNDATION</div>
+                <h2 class="module-title" style="font-size: 32px; margin-bottom: 10px;">"Foundation" Là Gì?</h2>
+                <div class="module-subtitle">Hai Trụ Cột Xây Dựng Nền Tảng HRM</div>
+            </div>
+
+            <div style="display: flex; gap: 30px; max-width: 1000px; margin: 0 auto; justify-content: center;">
+                <!-- Pillar 1: Org Structure -->
+                <div style="flex: 1; background: rgba(75, 108, 183, 0.1); border: 1px solid #4b6cb7; border-radius: 16px; padding: 25px; text-align: center;">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🏛️</div>
+                    <h3 style="color: #4b6cb7; font-size: 18px; margin-bottom: 10px;">TRỤ 1: Cơ Cấu Tổ Chức</h3>
+                    <div style="font-size: 12px; color: #888; margin-bottom: 15px;">(US-06)</div>
+                    <ul style="list-style: none; padding: 0; text-align: left; font-size: 13px; color: #ddd; line-height: 1.8;">
+                        <li>✅ Mô hình <strong>5 cấp</strong>: Group → Block → Entity → Dept → Member</li>
+                        <li>✅ Tách biệt Governance vs Business</li>
+                        <li>✅ <strong>100%</strong> dữ liệu tập trung vào hệ thống</li>
+                        <li>✅ Nền tảng cho phân quyền (RBAC)</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 2: Job Titles -->
+                <div style="flex: 1; background: rgba(17, 153, 142, 0.1); border: 1px solid #11998e; border-radius: 16px; padding: 25px; text-align: center;">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🎖️</div>
+                    <h3 style="color: #11998e; font-size: 18px; margin-bottom: 10px;">TRỤ 2: Hệ Thống Chức Danh</h3>
+                    <div style="font-size: 12px; color: #888; margin-bottom: 15px;">(US-07)</div>
+                    <ul style="list-style: none; padding: 0; text-align: left; font-size: 13px; color: #ddd; line-height: 1.8;">
+                        <li>✅ Format chuẩn: <strong>[Level] [Function]</strong></li>
+                        <li>✅ Phân cấp <strong>L1-L5</strong> rõ ràng</li>
+                        <li>✅ <strong>100%</strong> chức danh nhất quán</li>
+                        <li>✅ Hỗ trợ báo cáo & thống kê dễ dàng</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Value Summary -->
+            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid #555; border-radius: 30px; padding: 10px 20px; font-size: 13px; color: #fff;">
+                    <span style="color: #38ef7d;">✓</span> Giảm <strong>90%</strong> sai sót dữ liệu
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid #555; border-radius: 30px; padding: 10px 20px; font-size: 13px; color: #fff;">
+                    <span style="color: #38ef7d;">✓</span> Nền tảng cho <strong>RBAC</strong> & Phân quyền
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid #555; border-radius: 30px; padding: 10px 20px; font-size: 13px; color: #fff;">
+                    <span style="color: #38ef7d;">✓</span> Mở rộng <strong>không giới hạn</strong>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">17 / 25</div>
+    </div>
+
+    <!-- Slide 18: 5-Level Organizational Structure (US-06) - Renamed from 16 -->
+    <div class="slide" id="slide18">
+        <div class="module-container" style="flex-direction: column; padding: 20px 40px;">
+            <div style="text-align: center; margin-bottom: 10px;">
+                <div class="module-tag" style="background: linear-gradient(90deg, #4b6cb7, #182848); margin: 0 auto 5px; display: inline-block; font-size: 10px;">THE FOUNDATION</div>
+                <h2 class="module-title" style="font-size: 24px; margin-bottom: 5px;">Mô Hình Tổ Chức 5 Cấp</h2>
+                <div class="module-subtitle">5-Level Organizational Hierarchy (US-06)</div>
+            </div>
+
+            <div class="org-container-5lvl" style="gap: 15px;">
+                <!-- Definition Panel -->
+                <div id="lvlDefPanel" class="definition-panel"></div>
+
+                <!-- LEVEL 1: GROUP -->
+                <div class="lvl-row lvl-1" style="margin-bottom: 30px;">
+                     <div class="lvl-card" style="width: 280px; padding: 15px 20px;" onmouseenter="showLvlDef('L1: TẬP ĐOÀN (GROUP)', 'Đơn vị pháp lý cao nhất. Định hướng chiến lược toàn hệ thống.')" onmouseleave="hideLvlDef()">
+                         <div class="title" style="font-size: 11px;">LEVEL 1 - GROUP</div>
+                         <div class="content" style="font-size: 16px;">HG HOLDING GROUP</div>
+                         <div class="sub">Strategic Headquarters</div>
+                         <div class="conn-v"></div>
+                     </div>
+                </div>
+
+                <!-- Bridge to L2 -->
+                <div class="bridge-row" style="width: 50%; height: 20px;"></div>
+
+                <!-- LEVEL 2: BLOCK -->
+                <div class="lvl-row lvl-2" style="gap: 150px; margin-bottom: 25px;">
+                    <div class="lvl-card gov" style="width: 180px; padding: 12px 15px;" onmouseenter="showLvlDef('L2: KHỐI (BLOCK)', 'Phân chia chức năng lớn: Quản trị (Cost Center) vs Kinh doanh (Profit Center).')" onmouseleave="hideLvlDef()">
+                        <div class="title" style="font-size: 10px;">LEVEL - BLOCK</div>
+                        <div class="content" style="font-size: 14px;">KHỐI QUẢN TRỊ</div>
+                        <div class="conn-v"></div>
+                    </div>
+                    <div class="lvl-card biz" style="width: 180px; padding: 12px 15px;" onmouseenter="showLvlDef('L2: KHỐI (BLOCK)', 'Phân chia chức năng lớn: Quản trị (Cost Center) vs Kinh doanh (Profit Center).')" onmouseleave="hideLvlDef()">
+                        <div class="title" style="font-size: 10px;">LEVEL - BLOCK</div>
+                        <div class="content" style="font-size: 14px;">KHỐI KINH DOANH</div>
+                        <div class="conn-v"></div>
+                    </div>
+                </div>
+
+                <!-- LEVEL 3: ENTITY (Ban/Công ty) -->
+                <div class="lvl-row lvl-3" style="gap: 60px; margin-bottom: 25px;">
+                     <!-- GOVERNANCE ENTITIES -->
+                     <div style="display:flex; gap:12px; position: relative;">
+                        <div class="lvl-card" style="min-width:90px; padding: 10px 12px;" onmouseenter="showLvlDef('L3: BAN', 'Văn phòng chức năng cấp cao.')" onmouseleave="hideLvlDef()">
+                            <div class="title" style="font-size: 9px;">L2 (BAN)</div>
+                            <div class="content" style="font-size: 12px;">Ban Tài Chính</div>
+                            <div style="display: flex; gap: 8px; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #4b6cb7;">
+                                <div class="lvl-card" style="min-width: 80px; padding: 6px 8px; background: rgba(75,108,183,0.1); border-color: #4b6cb7;">
+                                    <div class="title" style="font-size: 8px;">L3 (DEPT)</div>
+                                    <div class="content" style="font-size: 11px;">Phòng Kế Toán</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lvl-card" style="min-width:90px; padding: 10px 12px;" onmouseenter="showLvlDef('L3: BAN', 'Văn phòng chức năng cấp cao.')" onmouseleave="hideLvlDef()">
+                            <div class="title" style="font-size: 9px;">L2 (BAN)</div>
+                            <div class="content" style="font-size: 12px;">Ban Nhân Sự</div>
+                            <div style="display: flex; gap: 8px; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #4b6cb7;">
+                                <div class="lvl-card" style="min-width: 80px; padding: 6px 8px; background: rgba(75,108,183,0.1); border-color: #4b6cb7;">
+                                    <div class="title" style="font-size: 8px;">L3 (DEPT)</div>
+                                    <div class="content" style="font-size: 11px;">Phòng HR</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- This entity has children -->
+                        <div class="lvl-card" style="min-width:90px; padding: 10px 12px;" onmouseenter="showLvlDef('L3: BAN', 'Văn phòng chức năng cấp cao.')" onmouseleave="hideLvlDef()">
+                            <div class="title" style="font-size: 9px;">L2 (BAN)</div>
+                            <div class="content" style="font-size: 12px;">Ban VH & Công Nghệ</div>
+                            <div style="display: flex; gap: 8px; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #4b6cb7;">
+                                <div class="lvl-card" style="min-width: 80px; padding: 6px 8px; background: rgba(75,108,183,0.1); border-color: #4b6cb7;">
+                                    <div class="title" style="font-size: 8px;">L3 (DEPT)</div>
+                                    <div class="content" style="font-size: 11px;">Phòng Vận Hành</div>
+                                </div>
+                                <div class="lvl-card" style="min-width: 80px; padding: 6px 8px; background: rgba(75,108,183,0.1); border-color: #4b6cb7;">
+                                    <div class="title" style="font-size: 8px;">L3 (DEPT)</div>
+                                    <div class="content" style="font-size: 11px;">Phòng Công Nghệ</div>
+                                    <div style="display:flex; gap:8px;">
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff A</div>
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff B</div>
+                    
+                     </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                     
+                     <!-- BUSINESS ENTITIES -->
+                     <div style="display:flex; gap:12px; position: relative;">
+                        <div class="lvl-card" style="min-width:90px; padding: 10px 12px;" onmouseenter="showLvlDef('L3: CÔNG TY CON', 'Legal Entity với P&L riêng.')" onmouseleave="hideLvlDef()">
+                            <div class="title" style="font-size: 9px;">L2 (ENTITY)</div>
+                            <div class="content" style="font-size: 12px;">HG Media</div>
+                            <div style="display: flex; gap: 8px; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #4b6cb7;">
+                                <div class="lvl-card" style="min-width: 80px; padding: 6px 8px; background: rgba(75,108,183,0.1); border-color: #4b6cb7;">
+                                    <div class="title" style="font-size: 8px;">L3 (DEPT)</div>
+                                    <div class="content" style="font-size: 11px;">Phòng BD</div>
+                                </div>
+                                <div class="lvl-card" style="min-width: 80px; padding: 6px 8px; background: rgba(75,108,183,0.1); border-color: #4b6cb7;">
+                                    <div class="title" style="font-size: 8px;">L3 (DEPT)</div>
+                                    <div class="content" style="font-size: 11px;">Phòng MKT Label</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lvl-card" style="min-width:80px; padding: 10px 12px;" onmouseenter="showLvlDef('L3: CÔNG TY CON', 'Legal Entity với P&L riêng.')" onmouseleave="hideLvlDef()">
+                            <div class="title" style="font-size: 9px;">L2 (ENTITY)</div>
+                            <div class="content" style="font-size: 12px;">An Tuệ</div>
+                        </div>
+                        <div class="lvl-card" style="min-width:80px; padding: 10px 12px;" onmouseenter="showLvlDef('L3: CÔNG TY CON', 'Legal Entity với P&L riêng.')" onmouseleave="hideLvlDef()">
+                            <div class="title" style="font-size: 9px;">L2 (ENTITY)</div>
+                            <div class="content" style="font-size: 12px;">Forest Music</div>
+                        </div>
+                        <div class="lvl-card" style="min-width:80px; padding: 10px 12px;" onmouseenter="showLvlDef('L3: CÔNG TY CON', 'Legal Entity với P&L riêng.')" onmouseleave="hideLvlDef()">
+                            <div class="title" style="font-size: 9px;">L2 (ENTITY)</div>
+                            <div class="content" style="font-size: 12px;">Red One</div>
+                        </div>
+                     </div>
+                </div>
+
+
+                <!-- LEVEL 5: MEMBER
+                <div class="lvl-row lvl-5" style="gap: 150px;">
+                     <div style="display:flex; gap:8px;">
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff A</div>
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff B</div>
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff A</div>
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff B</div>
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff A</div>
+                    
+                     </div>
+                     <div style="display:flex; gap:8px;">
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff C</div>
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff D</div>
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff A</div>
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff B</div>
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff A</div>
+                    
+                     </div>
+                </div> -->
+
+                <!-- Definition Script -->
+                <script>
+                    function showLvlDef(title, text) {
+                        const p = document.getElementById('lvlDefPanel');
+                        p.innerHTML = `<strong>${title}</strong><br>${text}`;
+                        p.style.display = 'block';
+                    }
+                    function hideLvlDef() {
+                        document.getElementById('lvlDefPanel').style.display = 'none';
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="slide-number">18 / 25</div>
+    </div>
+
+    <!-- Slide 19: Hệ Thống Chức Danh (US-07) -->
+    <div class="slide" id="slide19">
+        <div class="module-container" style="flex-direction: column; padding: 40px 60px;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div class="module-tag" style="background: linear-gradient(90deg, #11998e, #38ef7d); margin: 0 auto 10px; display: inline-block;">THE FOUNDATION</div>
+                <h2 class="module-title" style="font-size: 32px; margin-bottom: 10px;">Chuẩn Hóa Hệ Thống Chức Danh<br>(Job Title Standardization)</h2>
+                <div class="module-subtitle">Clear Taxonomy & Career Path • US-07</div>
+            </div>
+
+            <div style="display: flex; width: 100%; height: 100%; gap: 40px;">
+                <!-- Left: Rules -->
+                 <div style="width: 320px; flex-shrink: 0; padding-top: 10px;">
+                    <h3 style="color: #11998e; font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 5px;">QUY TẮC ĐẶT TÊN (Naming Convention)</h3>
+                    <div class="naming-box" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border: 1px dashed #666; margin-bottom: 20px;">
+                        <div style="font-family: monospace; font-size: 16px; color: #fff; text-align: center;">
+                            <span style="color: #f2994a;">[Cấp Độ]</span> + <span style="color: #11998e;">[Chức Năng]</span>
+                        </div>
+                        <div style="font-size: 12px; color: #aaa; text-align: center; margin-top: 5px;">(e.g., Senior Developer, HR Manager)</div>
+                    </div>
+
+                    <h3 style="color: #11998e; font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 5px;">GIÁ TRỊ MANG LẠI</h3>
+                    <ul style="list-style: none; padding: 0; color: #ddd; font-size: 13px; line-height: 1.6;">
+                        <li style="margin-bottom: 8px;">✅ <strong>Consistency:</strong> Loại bỏ các chức danh tự phát, không chuẩn.</li>
+                        <li style="margin-bottom: 8px;">✅ <strong>Clarity:</strong> Nhân viên biết rõ Level & Lộ trình thăng tiến.</li>
+                        <li style="margin-bottom: 8px;">✅ <strong>Reporting:</strong> Dễ dàng thống kê nhân sự theo Level/Role.</li>
+                    </ul>
+                </div>
+
+                <!-- Right: Visual Levels -->
+                <div class="level-pyramid-container" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+                    
+                    <!-- L1 -->
+                    <div class="job-level l1" onmouseenter="highlightJobLevel('l1')">
+                        <div class="level-badge l1">L1</div>
+                        <div class="level-content">
+                            <strong>Executive (C-Suite)</strong><br>Chairman, Group CEO
+                        </div>
+                    </div>
+                    
+                    <!-- L2 -->
+                    <div class="job-level l2" onmouseenter="highlightJobLevel('l2')">
+                        <div class="level-badge l2">L2</div>
+                        <div class="level-content">
+                            <strong>Director / VP</strong><br>C-Level, CEO Member Company
+                        </div>
+                    </div>
+
+                    <!-- L3 -->
+                    <div class="job-level l3" onmouseenter="highlightJobLevel('l3')">
+                        <div class="level-badge l3">L3</div>
+                        <div class="level-content">
+                            <strong>Head of Dept (HoD)</strong><br>Trưởng phòng, Trưởng bộ phận
+                        </div>
+                    </div>
+                    
+                    <!-- L4 -->
+                    <div class="job-level l4" onmouseenter="highlightJobLevel('l4')">
+                        <div class="level-badge l4">L4</div>
+                        <div class="level-content">
+                            <strong>Leader</strong><br>Quản lý bậc trung, Team Lead
+                        </div>
+                    </div>
+
+                    <!-- L5 -->
+                    <div class="job-level l5" onmouseenter="highlightJobLevel('l5')">
+                        <div class="level-badge l5">L5</div>
+                        <div class="level-content">
+                            <strong>Staff / Professional</strong><br>Senior, Junior, Fresher
+                        </div>
+                    </div>
+
+                    <!-- Floating Definition -->
+                    <div id="jobLevelInfo" style="position: absolute; right: 0; bottom: 50px; width: 200px; padding: 15px; background: rgba(0,0,0,0.8); border: 1px solid #555; border-radius: 8px; font-size: 12px; color: #fff; display: none;">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">19 / 25</div>
+    </div>
+
+    <!-- Slide 20: Job Function - Function vs Product (NEW) -->
+    <div class="slide" id="slide20">
+        <div class="module-container" style="flex-direction: column; padding: 40px 60px;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div class="module-tag" style="background: linear-gradient(90deg, #11998e, #38ef7d); margin: 0 auto 10px; display: inline-block;">THE FOUNDATION</div>
+                <h2 class="module-title" style="font-size: 28px; margin-bottom: 10px;">Chức Năng Công Việc (Job Function)</h2>
+                <div class="module-subtitle">Trục 2: Function vs Product • US-07</div>
+            </div>
+
+            <div style="display: flex; gap: 40px; width: 100%; max-width: 1000px; margin: 0 auto;">
+                <!-- Function Column -->
+                <div style="flex: 1; background: rgba(75, 108, 183, 0.1); border: 1px solid #4b6cb7; border-radius: 16px; padding: 25px;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="font-size: 36px; margin-bottom: 10px;">⚙️</div>
+                        <h3 style="color: #4b6cb7; font-size: 18px; margin-bottom: 5px;">FUNCTION</h3>
+                        <div style="font-size: 12px; color: #888;">Chức năng chuyên môn</div>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                        <div class="func-chip" style="background: rgba(75, 108, 183, 0.2); border: 1px solid #4b6cb7; border-radius: 20px; padding: 8px 15px; font-size: 12px; color: #fff;">💻 Technology</div>
+                        <div class="func-chip" style="background: rgba(75, 108, 183, 0.2); border: 1px solid #4b6cb7; border-radius: 20px; padding: 8px 15px; font-size: 12px; color: #fff;">💰 Finance</div>
+                        <div class="func-chip" style="background: rgba(75, 108, 183, 0.2); border: 1px solid #4b6cb7; border-radius: 20px; padding: 8px 15px; font-size: 12px; color: #fff;">👥 HR</div>
+                        <div class="func-chip" style="background: rgba(75, 108, 183, 0.2); border: 1px solid #4b6cb7; border-radius: 20px; padding: 8px 15px; font-size: 12px; color: #fff;">🏭 Operations</div>
+                        <div class="func-chip" style="background: rgba(75, 108, 183, 0.2); border: 1px solid #4b6cb7; border-radius: 20px; padding: 8px 15px; font-size: 12px; color: #fff;">⚖️ Legal</div>
+                        <div class="func-chip" style="background: rgba(75, 108, 183, 0.2); border: 1px solid #4b6cb7; border-radius: 20px; padding: 8px 15px; font-size: 12px; color: #fff;">📢 Marketing</div>
+                        <div class="func-chip" style="background: rgba(75, 108, 183, 0.2); border: 1px solid #4b6cb7; border-radius: 20px; padding: 8px 15px; font-size: 12px; color: #fff;">📈 Sales</div>
+                    </div>
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 8px; font-size: 11px; color: #aaa; text-align: center;">
+                        <strong style="color:#4b6cb7;">Ví dụ:</strong> Senior <strong>Developer</strong>, HR <strong>Manager</strong>
+                    </div>
+                </div>
+
+                <!-- Product Column -->
+                <div style="flex: 1; background: rgba(17, 153, 142, 0.1); border: 1px solid #11998e; border-radius: 16px; padding: 25px;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="font-size: 36px; margin-bottom: 10px;">📦</div>
+                        <h3 style="color: #11998e; font-size: 18px; margin-bottom: 5px;">PRODUCT</h3>
+                        <div style="font-size: 12px; color: #888;">Sản phẩm / Dịch vụ</div>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                        <div class="prod-chip" style="background: rgba(17, 153, 142, 0.2); border: 1px solid #11998e; border-radius: 20px; padding: 8px 15px; font-size: 12px; color: #fff;">🎬 HG Media</div>
+                        <div class="prod-chip" style="background: rgba(17, 153, 142, 0.2); border: 1px solid #11998e; border-radius: 20px; padding: 8px 15px; font-size: 12px; color: #fff;">🔴 RED ONE Media</div>
+                        <div class="prod-chip" style="background: rgba(17, 153, 142, 0.2); border: 1px solid #11998e; border-radius: 20px; padding: 8px 15px; font-size: 12px; color: #fff;">🎵 Forest Music</div>
+                        <div class="prod-chip" style="background: rgba(17, 153, 142, 0.2); border: 1px solid #11998e; border-radius: 20px; padding: 8px 15px; font-size: 12px; color: #fff;">🏢 Các công ty con khác</div>
+                    </div>
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 8px; font-size: 11px; color: #aaa; text-align: center;">
+                        <strong style="color:#11998e;">Phân biệt:</strong> Nhân viên thuộc Function hay Product Line
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div style="margin-top: 25px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <div style="background: rgba(255,255,255,0.05); border: 1px dashed #555; border-radius: 12px; padding: 15px 30px;">
+                    <div style="font-size: 14px; color: #fff; margin-bottom: 5px;">
+                        <strong>Quy tắc đặt tên:</strong> <span style="color: #f2994a;">[Level]</span> + <span style="color: #4b6cb7;">[Function]</span> hoặc <span style="color: #11998e;">[Product]</span>
+                    </div>
+                    <div style="font-size: 12px; color: #888;">
+                        Ví dụ: <span style="color:#fff;">Senior Developer</span> (Function) | <span style="color:#fff;">Content Lead - HG Media</span> (Product)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">20 / 26</div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SLIDE DESIGN SHOWROOM -->
+    <!-- ============================================== -->
+    
+    
+    
+    <!-- Slide 21: VẤN ĐỀ CỐT LÕI - Tại Sao Cần Số Hóa Hồ Sơ? -->
+    <div class="slide" id="slide21">
+        <div class="module-container" style="flex-direction: column; padding: 40px 60px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div class="module-tag" style="background: linear-gradient(90deg, #FF6B6B, #ee5a24); margin: 0 auto 10px; display: inline-block;">EMPLOYEE PROFILE</div>
+                <h2 class="module-title" style="font-size: 36px; margin-bottom: 10px;">Tại Sao Cần Số Hóa Hồ Sơ Nhân Sự?</h2>
+                <div class="module-subtitle" style="color: #FF6B6B;">Bối Cảnh & Vấn Đề Cốt Lõi Cần Giải Quyết</div>
+            </div>
+
+            <!-- Current State Banner -->
+            <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 30px;">
+                <div style="background: linear-gradient(135deg, rgba(255,107,107,0.15), rgba(238,90,36,0.1)); border: 1px solid rgba(255,107,107,0.4); border-radius: 16px; padding: 20px 40px; text-align: center;">
+                    <div style="font-size: 48px; font-weight: 800; color: #fff;">400+</div>
+                    <div style="font-size: 14px; color: #FF6B6B; text-transform: uppercase; letter-spacing: 1px;">Nhân Sự</div>
+                </div>
+                <div style="background: linear-gradient(135deg, rgba(255,107,107,0.15), rgba(238,90,36,0.1)); border: 1px solid rgba(255,107,107,0.4); border-radius: 16px; padding: 20px 40px; text-align: center;">
+                    <div style="font-size: 48px; font-weight: 800; color: #fff;">📊</div>
+                    <div style="font-size: 14px; color: #FF6B6B; text-transform: uppercase; letter-spacing: 1px;">Excel + Giấy Tờ</div>
+                </div>
+                <div style="background: linear-gradient(135deg, rgba(255,107,107,0.15), rgba(238,90,36,0.1)); border: 1px solid rgba(255,107,107,0.4); border-radius: 16px; padding: 20px 40px; text-align: center;">
+                    <div style="font-size: 48px; font-weight: 800; color: #fff;">0%</div>
+                    <div style="font-size: 14px; color: #FF6B6B; text-transform: uppercase; letter-spacing: 1px;">Tập Trung Hóa</div>
+                </div>
+            </div>
+
+            <!-- Pain Points Grid -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1100px; margin: 0 auto;">
+                <!-- Pain 1 -->
+                <div style="background: rgba(255,107,107,0.08); border: 1px solid rgba(255,107,107,0.25); border-radius: 16px; padding: 25px; transition: all 0.3s;">
+                    <div style="font-size: 36px; margin-bottom: 15px;">📂🔀</div>
+                    <h3 style="color: #FF6B6B; font-size: 16px; margin-bottom: 10px; font-weight: 700;">Dữ Liệu Phân Tán</h3>
+                    <p style="font-size: 13px; color: #bbb; line-height: 1.6;">Thông tin nhân viên được lưu trữ <strong style="color:#fff;">rời rạc ở nhiều file Excel</strong> khác nhau theo từng phòng ban. <em style="color:#FF6B6B;">Không có nguồn dữ liệu trung tâm.</em></p>
+                </div>
+
+                <!-- Pain 2 -->
+                <div style="background: rgba(255,107,107,0.08); border: 1px solid rgba(255,107,107,0.25); border-radius: 16px; padding: 25px; transition: all 0.3s;">
+                    <div style="font-size: 36px; margin-bottom: 15px;">🔍❌</div>
+                    <h3 style="color: #FF6B6B; font-size: 16px; margin-bottom: 10px; font-weight: 700;">Khó Tra Cứu & Báo Cáo</h3>
+                    <p style="font-size: 13px; color: #bbb; line-height: 1.6;">Việc tìm kiếm thông tin hoặc xuất báo cáo tổng hợp <strong style="color:#fff;">rất khó khăn</strong>. Truyền thông thông tin nội bộ không hiệu quả.</p>
+                </div>
+
+                <!-- Pain 3 -->
+                <div style="background: rgba(255,107,107,0.08); border: 1px solid rgba(255,107,107,0.25); border-radius: 16px; padding: 25px; transition: all 0.3s;">
+                    <div style="font-size: 36px; margin-bottom: 15px;">📄➡️💨</div>
+                    <h3 style="color: #FF6B6B; font-size: 16px; margin-bottom: 10px; font-weight: 700;">Chưa Số Hóa Dữ Liệu</h3>
+                    <p style="font-size: 13px; color: #bbb; line-height: 1.6;">Thông tin nhân sự <strong style="color:#fff;">chưa được số hóa</strong>. Còn nhiều thông tin quan trọng cần nắm bắt nhưng không được lưu trữ có hệ thống.</p>
+                </div>
+            </div>
+
+            <!-- Impact Statement -->
+            <div style="margin-top: 30px; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <div style="background: rgba(255,107,107,0.1); border: 1px dashed rgba(255,107,107,0.5); border-radius: 20px; padding: 20px 40px;">
+                    <div style="font-size: 16px; color: #fff; font-style: italic;">
+                        💡 "<strong style="color:#FF6B6B;">Không có hệ thống tập trung</strong> để quản lý toàn bộ thông tin nhân sự, dẫn đến nhiều <strong>khó khăn trong vận hành hàng ngày, số hóa và tự động hóa quy trình</strong>."
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">22 / 26</div>
+    </div>
+
+    <!-- Slide 22: GIẢI PHÁP - Profile 360° Một Chạm -->
+    <div class="slide" id="slide22-profile">
+        <div class="module-container" style="flex-direction: column; padding: 30px 60px;">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div class="module-tag" style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); margin: 0 auto 10px; display: inline-block;">DIGITISATION</div>
+                <h2 class="module-title" style="font-size: 34px; margin-bottom: 10px;">Hồ Sơ Nhân Sự Số<br>Truy Xuất Một Chạm</h2>
+                <div class="module-subtitle" style="color: #00d2ff;">Digital Profile 360° & Document Management</div>
+            </div>
+
+            <div style="display: flex; gap: 40px; width: 100%; max-width: 1200px; margin: 0 auto;">
+                
+                <!-- Left: Vision & Quote -->
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <!-- Quote Box -->
+                    <div style="background: rgba(0, 210, 255, 0.08); border-left: 4px solid #00d2ff; padding: 25px 30px; border-radius: 0 16px 16px 0; margin-bottom: 25px;">
+                        <div style="font-size: 22px; font-weight: 300; color: #fff; font-style: italic; line-height: 1.5;">
+                            "Chuyển đổi từ hồ sơ giấy sang <strong style="color: #00d2ff;">Digital Profile 360°</strong>. Mọi thông tin nhân sự chỉ cách bạn <strong style="color: #00d2ff;">1 cú click</strong>."
+                        </div>
+                    </div>
+
+                    <!-- Features List -->
+                    <div style="padding-left: 10px;">
+                        <div style="margin-bottom: 18px; display: flex; align-items: flex-start;">
+                            <span style="color: #00d2ff; font-size: 18px; margin-right: 12px;">•</span>
+                            <div>
+                                <strong style="color: #fff;">Profile 360 (US-01/02):</strong>
+                                <span style="color: #aaa;"> TT Cá nhân, Công việc, Gia đình, BHXH.</span>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 18px; display: flex; align-items: flex-start;">
+                            <span style="color: #00d2ff; font-size: 18px; margin-right: 12px;">•</span>
+                            <div>
+                                <strong style="color: #fff;">Tra Cứu Thông Minh (US-05):</strong>
+                                <span style="color: #aaa;"> Tìm theo Tên, Mã, Phòng ban, Skill...</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start;">
+                            <span style="color: #00d2ff; font-size: 18px; margin-right: 12px;">•</span>
+                            <div>
+                                <strong style="color: #fff;">Kho Tài Liệu (US-06/07):</strong>
+                                <span style="color: #aaa;"> Hợp đồng, Quyết định, Bằng cấp online.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Transformation Visual -->
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <!-- Transformation Diagram -->
+                    <div style="display: flex; align-items: center; gap: 25px; margin-bottom: 30px;">
+                        <!-- Before: Paper Icon -->
+                        <div style="text-align: center;">
+                            <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 10px;">👤</div>
+                            <div style="font-size: 11px; color: #666;">Hồ sơ giấy</div>
+                        </div>
+                        
+                        <!-- Arrow -->
+                        <div style="font-size: 28px; color: #00d2ff;">➔</div>
+                        
+                        <!-- After: Digital Icon -->
+                        <div style="text-align: center;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, rgba(0,210,255,0.2), rgba(58,123,213,0.1)); border: 1px solid #00d2ff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 10px;">💻</div>
+                            <div style="font-size: 11px; color: #00d2ff;">Digital Profile</div>
+                        </div>
+                    </div>
+
+                    <!-- Digital Transformation Checklist -->
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(0,210,255,0.3); border-radius: 16px; padding: 25px; width: 100%;">
+                        <h4 style="color: #00d2ff; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; text-align: center;">DIGITAL TRANSFORMATION</h4>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="width: 22px; height: 22px; background: #00d2ff; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #000;">✓</span>
+                                <span style="color: #ddd; font-size: 14px;">Loại bỏ File giấy</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="width: 22px; height: 22px; background: #00d2ff; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #000;">✓</span>
+                                <span style="color: #ddd; font-size: 14px;">Centralized Data</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="width: 22px; height: 22px; background: #00d2ff; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #000;">✓</span>
+                                <span style="color: #ddd; font-size: 14px;">Secure Access</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="width: 22px; height: 22px; background: #00d2ff; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #000;">✓</span>
+                                <span style="color: #ddd; font-size: 14px;">Easy Search</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">23 / 26</div>
+    </div>
+
+    <!-- Slide 23: Chi Tiết User Stories US-01 đến US-05 -->
+    <div class="slide" id="slide23-us">
+        <div class="module-container">
+            <!-- Left Pane: Epic Overview -->
+            <div class="module-info">
+                <div class="module-tag" style="background: linear-gradient(90deg, #00d2ff, #3a7bd5);">EPIC 01</div>
+                <h2 class="module-title">Quản Lý Hồ Sơ<br>Nhân Viên</h2>
+                <div class="module-subtitle">Employee Profile Management</div>
+                
+                <!-- Vision Message -->
+                <div class="module-message" style="border-left-color: #00d2ff;">
+                    "<span class="highlight-text" style="color:#00d2ff;">Số hóa dữ liệu nhân sự</span>. Đưa dữ liệu nhân sự của công ty về chung 1 nền tảng đảm bảo <span class="highlight-text" style="color:#00d2ff;">đồng bộ, dễ dàng tra cứu</span> và xem thông tin."
+                </div>
+                
+                <div class="module-commitment">
+                    <div style="margin-bottom:10px;">1. <strong>100%</strong> Nhân sự có hồ sơ số trong hệ thống.</div>
+                    <div style="margin-bottom:10px;">2. Tra cứu nhanh chóng: <strong>< 5 giây</strong> tìm bất kỳ ai.</div>
+                    <div style="margin-bottom:10px;">3. <strong>0%</strong> thất lạc dữ liệu quan trọng.</div>
+                    <div>4. Nền tảng cho <strong>tất cả</strong> quy trình HR tiếp theo.</div>
+                </div>
+
+                <div class="goals-bar">
+                    <div class="goal-item" title="Centralized" style="border-color: #00d2ff; color:#00d2ff;">🎯 Centralized</div>
+                    <div class="goal-item" title="Searchable" style="border-color: #00d2ff; color:#00d2ff;">🔍 Searchable</div>
+                    <div class="goal-item" title="Secure" style="border-color: #00d2ff; color:#00d2ff;">🔐 Secure</div>
+                </div>
+            </div>
+
+            <!-- Right Pane: User Stories -->
+            <div class="module-epics">
+                <!-- US-01 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #00d2ff;">📝</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">US-01: THÔNG TIN CƠ BẢN (Master Data)</div>
+                            <div class="epic-desc">Nhập liệu & quản lý thông tin cốt lõi</div>
+                        </div>
+                         <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Thông tin cá nhân:</strong> Họ tên, ngày sinh, CCCD, địa chỉ, SĐT, email.</li>
+                            <li>• <strong>Thông tin công việc:</strong> Mã NV, Phòng ban, Chức danh, Ngày vào.</li>
+                            <li>• <strong>Thông tin lương:</strong> Số TK ngân hàng, mức lương cơ bản.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- US-02 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #00d2ff;">👁️</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">US-02: XEM CHI TIẾT HỒ SƠ 360°</div>
+                             <div class="epic-desc">Hiển thị toàn diện profile nhân viên</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Profile 360:</strong> Giao diện hiển thị tổng hợp toàn bộ thông tin.</li>
+                            <li>• <strong>Tabs chức năng:</strong> Cá nhân, Công việc, Gia đình, BHXH, Học vấn.</li>
+                            <li>• <strong>Timeline:</strong> Lịch sử công tác, thăng tiến, khen thưởng.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- US-03/04 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #00d2ff;">👨‍👩‍👧</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">US-03/04: THÔNG TIN GIA ĐÌNH & BHXH</div>
+                             <div class="epic-desc">Quản lý người thân & Bảo hiểm xã hội</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Gia đình:</strong> Thông tin người thân, người phụ thuộc, liên hệ khẩn cấp.</li>
+                            <li>• <strong>BHXH:</strong> Mã số BHXH, lịch sử đóng, quyền lợi bảo hiểm.</li>
+                            <li>• <strong>Giảm trừ:</strong> Tự động tính giảm trừ gia cảnh cho tính thuế TNCN.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- US-05 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #00d2ff;">🔍</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">US-05: TRA CỨU THÔNG MINH</div>
+                             <div class="epic-desc">Tìm kiếm nhanh & Lọc nâng cao</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Quick Search:</strong> Tìm ngay theo Tên, Mã NV, Email, SĐT.</li>
+                            <li>• <strong>Advanced Filter:</strong> Lọc theo Phòng ban, Chức danh, Ngày vào làm.</li>
+                            <li>• <strong>Export:</strong> Xuất danh sách kết quả ra Excel để báo cáo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">24 / 26</div>
+    </div>
+
+    <!-- Slide 21: Design Showroom -->
+    <div class="slide" id="slide-design">
+        <div class="module-container" style="flex-direction: column; padding: 30px 60px;">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div class="module-tag" style="background: linear-gradient(90deg, #667eea, #764ba2); margin: 0 auto 10px; display: inline-block;">DESIGN PREVIEW</div>
+                <h2 class="module-title" style="font-size: 32px; margin-bottom: 10px;">Phong Cách Thiết Kế HRM</h2>
+                <div class="module-subtitle" style="color: #667eea;">UI/UX Design Showroom • Modern & Intuitive</div>
+            </div>
+
+            <!-- Design Principles -->
+            <div style="display: flex; justify-content: center; gap: 25px; margin-bottom: 25px;">
+                <div style="background: rgba(102,126,234,0.1); border: 1px solid rgba(102,126,234,0.3); border-radius: 30px; padding: 10px 20px; font-size: 13px; color: #fff;">
+                    🎨 <strong>Minimal & Clean</strong>
+                </div>
+                <div style="background: rgba(102,126,234,0.1); border: 1px solid rgba(102,126,234,0.3); border-radius: 30px; padding: 10px 20px; font-size: 13px; color: #fff;">
+                    🌙 <strong>Dark Mode First</strong>
+                </div>
+                <div style="background: rgba(102,126,234,0.1); border: 1px solid rgba(102,126,234,0.3); border-radius: 30px; padding: 10px 20px; font-size: 13px; color: #fff;">
+                    📱 <strong>Responsive</strong>
+                </div>
+                <div style="background: rgba(102,126,234,0.1); border: 1px solid rgba(102,126,234,0.3); border-radius: 30px; padding: 10px 20px; font-size: 13px; color: #fff;">
+                    ⚡ <strong>Fast & Smooth</strong>
+                </div>
+            </div>
+
+            <!-- Image Gallery Grid -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 1200px; margin: 0 auto;">
+                <!-- Image 1: Profile Overview -->
+                <div class="design-card" onclick="openLightbox('Ảnh Showroom/profile All Overview.png', 'Profile Overview - Tổng quan hồ sơ nhân sự')">
+                    <img src="Ảnh Showroom/profile All Overview.png" alt="Profile Overview" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px;">
+                    <div class="design-label">📊 Profile Overview</div>
+                </div>
+
+                <!-- Image 2: Organization -->
+                <div class="design-card" onclick="openLightbox('Ảnh Showroom/Organization.png', 'Organization - Sơ đồ tổ chức')">
+                    <img src="Ảnh Showroom/Organization.png" alt="Organization" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px;">
+                    <div class="design-label">🏢 Organization Chart</div>
+                </div>
+
+                <!-- Image 3: Table Profile -->
+                <div class="design-card" onclick="openLightbox('Ảnh Showroom/Table Profile.png', 'Table Profile - Danh sách nhân viên')">
+                    <img src="Ảnh Showroom/Table Profile.png" alt="Table Profile" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px;">
+                    <div class="design-label">📋 Employee Table</div>
+                </div>
+
+                <!-- Image 4: Detail Personal -->
+                <div class="design-card" onclick="openLightbox('Ảnh Showroom/Detail personal.png', 'Detail Personal - Chi tiết thông tin cá nhân')">
+                    <img src="Ảnh Showroom/Detail personal.png" alt="Detail Personal" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px;">
+                    <div class="design-label">👤 Personal Details</div>
+                </div>
+
+                <!-- Image 5: Viewing Personal -->
+                <div class="design-card" onclick="openLightbox('Ảnh Showroom/Viewing personal.png', 'Viewing Personal - Xem thông tin nhân viên')">
+                    <img src="Ảnh Showroom/Viewing personal.png" alt="Viewing Personal" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px;">
+                    <div class="design-label">👁️ Profile View</div>
+                </div>
+
+                <!-- Placeholder / Coming Soon -->
+                <div style="background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 205px;">
+                    <div style="font-size: 32px; margin-bottom: 10px; opacity: 0.3;">🚀</div>
+                    <div style="font-size: 14px; color: #555;">More Coming...</div>
+                </div>
+            </div>
+
+            <!-- Footer Note -->
+            <div style="margin-top: 20px; text-align: center; font-size: 12px; color: #666; font-style: italic;">
+                💡 Click vào ảnh để xem chi tiết • Thiết kế sẽ tiếp tục được hoàn thiện và mở rộng
+            </div>
+        </div>
+        <div class="slide-number">21 / 26</div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center; flex-direction: column;">
+        <span onclick="closeLightbox()" style="position: absolute; top: 30px; right: 40px; font-size: 40px; color: #fff; cursor: pointer; z-index: 1001;">&times;</span>
+        <img id="lightboxImg" src="" style="max-width: 90%; max-height: 80%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+        <div id="lightboxCaption" style="margin-top: 20px; font-size: 18px; color: #fff; text-align: center;"></div>
+    </div>
+
+    <style>
+        .design-card {
+            background: rgba(25, 25, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 10px;
+        }
+        .design-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+        .design-label {
+            padding: 10px 0 5px;
+            font-size: 13px;
+            color: #ccc;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+
+    <script>
+        function openLightbox(src, caption) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxCaption').textContent = caption;
+            document.getElementById('lightboxModal').style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+        }
+        // Close on click outside
+        document.getElementById('lightboxModal').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+
+    <!-- ============================================== -->
+    <!-- PHẦN HỒ SƠ NHÂN SỰ - EPIC 01 (3 SLIDES) -->
+    <!-- ============================================== -->
+     
+    <!-- Slide 22: Chiến Lược Triển Khai (Execution Phase) -->
+    <div class="slide" id="slide22">
+        <div class="module-container">
+            <div class="module-info">
+                <div class="module-tag" style="background: linear-gradient(90deg, #D31027, #EA384D);">EXECUTION</div>
+                <h2 class="module-title">Lộ Trình Triển Khai<br>Thần Tốc & Hiệu Quả</h2>
+                <div class="module-subtitle">Execution Roadmap: 30-Day Go-Live</div>
+                
+                <div class="module-message" style="border-left-color: #D31027;">
+                    "Mục tiêu: <span class="highlight-text" style="color:#D31027;">Go-live Module 1</span> ngay tháng đầu tiên bắt đầu dự án. Thiết lập nền tảng dữ liệu sạch 100%."
+                </div>
+
+                <div class="goals-bar" style="margin-top: 20px;">
+                    <div class="goal-item" title="Speed" style="border-color: #D31027; color:#EA384D;">⚡ 30 Days</div>
+                    <div class="goal-item" title="Centralized" style="border-color: #D31027; color:#EA384D;">🎯 Centralized DB</div>
+                    <div class="goal-item" title="Quality" style="border-color: #D31027; color:#EA384D;">⭐ Scorecard</div>
+                </div>
+            </div>
+
+            <div class="module-epics">
+                <!-- Epic 1 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #D31027;">📅</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">TUẦN 1: KICK-OFF & DATA</div>
+                            <div class="epic-desc">Thu thập thông tin, thiết kế hệ thống.</div>
+                        </div>
+                         <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Setup:</strong> Xây dựng sơ đồ tổ chức doanh nghiệp.</li>
+                            <li>• <strong>Import:</strong> Nhập liệu Org Chart & Hồ sơ nhân sự cơ bản.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 2 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #D31027;">🤝</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">TUẦN 2-3: ORGANIZATION & POLICIES</div>
+                             <div class="epic-desc">Chuẩn hóa cơ cấu & Đồng bộ hệ thống.</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Org Structure:</strong> Hoàn thiện cây sơ đồ tổ chức 5 cấp.</li>
+                            <li>• <strong>Policy:</strong> Xây dựng website, đẩy dữ liệu và thông tin.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Epic 3 -->
+                <div class="epic-card" onclick="toggleEpic(this)">
+                    <div class="epic-header">
+                        <div class="epic-icon-box" style="color: #D31027;">🚀</div>
+                        <div class="epic-title-group">
+                            <div class="epic-name">TUẦN 4: GO-LIVE & TRAINING</div>
+                             <div class="epic-desc">Đào tạo & Vận hành chính thức.</div>
+                        </div>
+                        <div class="epic-arrow">▼</div>
+                    </div>
+                    <div class="epic-body">
+                        <ul class="epic-list">
+                            <li>• <strong>Training:</strong> Hướng dẫn sử dụng cho Key Users & Admins.</li>
+                            <li>• <strong>Golive:</strong> Chính thức áp dụng sơ đồ tổ chức, đồng bộ các tool nội bộ.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">25 / 26</div>
+    </div>
+
+    <!-- Slide 23: Q&A -->
+    <div class="slide" id="slide23">
+        <div class="slide-header">
+            <h2>Thảo Luận & Hỏi Đáp</h2>
+            <p>Sẵn sàng bắt đầu!</p>
+        </div>
+        
+        <div class="qa-layout">
+            <div style="background:#111; border-radius:20px; padding:30px; border:1px solid #333;">
+                <h3 style="margin-bottom:20px;">Q&A</h3>
+                <input type="text" id="qInput" style="width:100%; padding:15px; margin-bottom:15px; background:#222; border:1px solid #444; color:#fff;" placeholder="Câu hỏi...">
+                <textarea id="aInput" style="width:100%; height:100px; padding:15px; margin-bottom:15px; background:#222; border:1px solid #444; color:#fff;" placeholder="Ghi chú..."></textarea>
+                <button onclick="addQA()" style="width:100%; padding:15px; background:var(--accent-gradient); color:fff; border:none; font-weight:bold; cursor:pointer; border-radius:50px;">Thêm</button>
+            </div>
+            <div style="background:#111; border-radius:20px; padding:30px; border:1px solid #333; overflow-y:auto;" id="qaList">
+                <!-- Items -->
+            </div>
+        </div>
+        <div class="slide-number">26 / 26</div>
+    </div>
+
+    <!-- Removed old Slide 9 -->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const navDots = document.getElementById('navDots');
+        navDots.innerHTML = ''; // Clear old dots if any
+
+        slides.forEach((slide, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => slide.scrollIntoView({ behavior: 'smooth' }));
+            navDots.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            slides.forEach(slide => {
+                if (pageYOffset >= slide.offsetTop - 100) current = slide.getAttribute('id');
+            });
+            dots.forEach((dot, index) => {
+               dot.classList.remove('active');
+               if (slides[index] && slides[index].getAttribute('id') === current) dot.classList.add('active');
+            });
+        });
+
+        function toggleEpic(card) {
+            // Close others
+            document.querySelectorAll('.epic-card').forEach(c => {
+                if(c !== card) c.classList.remove('active');
+            });
+            // Toggle current
+            card.classList.toggle('active');
+        }
+
+        function addQA() {
+            const q = document.getElementById('qInput').value;
+            const a = document.getElementById('aInput').value;
+            if(!q) return;
+            const item = document.createElement('div');
+            item.style.marginBottom = '15px';
+            item.style.padding = '15px';
+            item.style.background = 'rgba(102,126,234,0.1)';
+            item.style.borderLeft = '4px solid #667eea';
+            item.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#aaa;">A: ${a}</span>`;
+            document.getElementById('qaList').prepend(item);
+            document.getElementById('qInput').value = '';
+            document.getElementById('aInput').value = '';
+        }
+        const levelData = {
+            'l1': '<strong>LEVEL 1 (C-Suite)</strong><br>Chiến lược & Tầm nhìn tập đoàn.',
+            'l2': '<strong>LEVEL 2 (Director)</strong><br>Lãnh đạo Khối/Công ty. Quyết định chiến thuật.',
+            'l3': '<strong>LEVEL 3 (HoD)</strong><br>Quản lý nguồn lực phòng ban.',
+            'l4': '<strong>LEVEL 4 (Manager)</strong><br>Dẫn dắt đội nhóm thực thi.',
+            'l5': '<strong>LEVEL 5 (Staff)</strong><br>Trực tiếp thực thi công việc chuyên môn.'
+        };
+
+        function highlightJobLevel(level) {
+            // Reset
+            document.querySelectorAll('.job-level').forEach(n => {
+                n.classList.remove('highlight');
+                n.style.opacity = '0.4';
+            });
+            
+            // Highlight
+            const target = document.querySelector(`.job-level.${level}`);
+            if(target) {
+                target.classList.add('highlight');
+                target.style.opacity = '1';
+                target.style.transform = 'scale(1.05)';
+            }
+
+            // Info
+            const pane = document.getElementById('jobLevelInfo');
+            if(levelData[level]) {
+                pane.innerHTML = levelData[level];
+                pane.style.display = 'block';
+            }
+        }
+
+        document.querySelector('.level-pyramid-container').addEventListener('mouseleave', () => {
+             document.querySelectorAll('.job-level').forEach(n => {
+                n.classList.remove('highlight');
+                n.style.opacity = '1';
+                n.style.transform = 'scale(1)';
+            });
+            document.getElementById('jobLevelInfo').style.display = 'none';
+        });
+
+        // ===== THEME TOGGLE =====
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            body.classList.toggle('light-theme');
+            
+            if (body.classList.contains('light-theme')) {
+                icon.textContent = '🌙';
+                localStorage.setItem('hrm-theme', 'light');
+            } else {
+                icon.textContent = '☀️';
+                localStorage.setItem('hrm-theme', 'dark');
+            }
+        }
+
+        // Load saved theme on page load
+        (function() {
+            const savedTheme = localStorage.getItem('hrm-theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                document.getElementById('themeIcon').textContent = '🌙';
+            }
+        })();
+    </script>
+</body>
+</html>

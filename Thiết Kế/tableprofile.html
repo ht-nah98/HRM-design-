@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tổng Quan Hồ Sơ Nhân Viên (Quản lý)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0f172a", 
+                        "primary-light": "#334155",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1e293b",
+                        "text-light": "#1e293b",
+                        "text-dark": "#f1f5f9",
+                        "subtext-light": "#64748b",
+                        "subtext-dark": "#94a3b8",
+                        success: "#10b981",
+                        warning: "#f59e0b",
+                        danger: "#ef4444",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col p-6 transition-colors duration-300">
+<div class="w-full max-w-7xl mx-auto mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h1 class="text-3xl font-bold text-text-light dark:text-text-dark tracking-tight mb-1">
+                Tổng Quan Hồ Sơ Nhân Viên
+            </h1>
+<p class="text-subtext-light dark:text-subtext-dark text-sm">
+                Quản lý thông tin nhân sự và hiệu suất làm việc
+            </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-light transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="text-sm font-medium">Thêm Nhân Viên</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="text-sm font-medium">Xuất Báo Cáo</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm" id="theme-toggle">
+<i class="fas fa-moon dark:hidden"></i>
+<i class="fas fa-sun hidden dark:block"></i>
+</button>
+</div>
+</div>
+<div class="w-full max-w-7xl mx-auto mb-6 bg-card-light dark:bg-card-dark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+<div class="flex flex-col lg:flex-row gap-4 justify-between">
+<div class="flex flex-col sm:flex-row gap-3 flex-grow">
+<div class="relative w-full sm:w-64">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-subtext-light dark:text-subtext-dark">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="w-full pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:ring-primary focus:border-primary dark:text-text-dark" placeholder="Tìm kiếm theo tên, ID..." type="text"/>
+</div>
+<select class="w-full sm:w-48 py-2 px-3 bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:ring-primary focus:border-primary dark:text-text-dark">
+<option value="">Tất cả phòng ban</option>
+<option value="engineering">Kỹ thuật</option>
+<option value="design">Thiết kế</option>
+<option value="marketing">Marketing</option>
+<option value="hr">Nhân sự</option>
+</select>
+<select class="w-full sm:w-48 py-2 px-3 bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:ring-primary focus:border-primary dark:text-text-dark">
+<option value="">Trạng thái làm việc</option>
+<option value="active">Đang làm việc</option>
+<option value="leave">Nghỉ phép</option>
+<option value="probation">Thử việc</option>
+</select>
+</div>
+<div class="flex items-center gap-2 border-l border-gray-200 dark:border-gray-700 pl-0 lg:pl-4">
+<button class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-subtext-light dark:text-subtext-dark hover:text-primary dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span>Lọc nâng cao</span>
+</button>
+</div>
+</div>
+</div>
+<div class="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<p class="text-subtext-light dark:text-subtext-dark text-xs font-medium uppercase tracking-wider">Tổng nhân viên</p>
+<h3 class="text-2xl font-bold text-text-light dark:text-text-dark">142</h3>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<p class="text-subtext-light dark:text-subtext-dark text-xs font-medium uppercase tracking-wider">Đang hoạt động</p>
+<h3 class="text-2xl font-bold text-text-light dark:text-text-dark">128</h3>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">beach_access</span>
+</div>
+<div>
+<p class="text-subtext-light dark:text-subtext-dark text-xs font-medium uppercase tracking-wider">Nghỉ phép</p>
+<h3 class="text-2xl font-bold text-text-light dark:text-text-dark">8</h3>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
+<span class="material-symbols-outlined">star</span>
+</div>
+<div>
+<p class="text-subtext-light dark:text-subtext-dark text-xs font-medium uppercase tracking-wider">Hiệu suất cao</p>
+<h3 class="text-2xl font-bold text-text-light dark:text-text-dark">24</h3>
+</div>
+</div>
+</div>
+<div class="w-full max-w-7xl mx-auto bg-card-light dark:bg-card-dark rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+<th class="py-4 px-6 text-xs font-semibold text-subtext-light dark:text-subtext-dark uppercase tracking-wider w-12">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-card-dark" type="checkbox"/>
+</th>
+<th class="py-4 px-6 text-xs font-semibold text-subtext-light dark:text-subtext-dark uppercase tracking-wider cursor-pointer hover:text-primary transition-colors">
+                            Nhân viên <i class="fas fa-sort ml-1"></i>
+</th>
+<th class="py-4 px-6 text-xs font-semibold text-subtext-light dark:text-subtext-dark uppercase tracking-wider cursor-pointer hover:text-primary transition-colors">
+                            Vai trò &amp; Phòng ban
+                        </th>
+<th class="py-4 px-6 text-xs font-semibold text-subtext-light dark:text-subtext-dark uppercase tracking-wider cursor-pointer hover:text-primary transition-colors">
+                            Trạng thái
+                        </th>
+<th class="py-4 px-6 text-xs font-semibold text-subtext-light dark:text-subtext-dark uppercase tracking-wider text-center">
+                            Nghỉ phép còn lại
+                        </th>
+<th class="py-4 px-6 text-xs font-semibold text-subtext-light dark:text-subtext-dark uppercase tracking-wider text-center">
+                            Hiệu suất
+                        </th>
+<th class="py-4 px-6 text-xs font-semibold text-subtext-light dark:text-subtext-dark uppercase tracking-wider text-right">
+                            Hành động
+                        </th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+<tr class="group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="py-4 px-6">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-card-dark" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full overflow-hidden">
+<img alt="Michael Chen" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6eL-rviMeLBFlEjEUZGwgTOXpA1vleuT8ehrPS9NywL8Tx63gvUFaxH6AWKpnlpxkIuvVG0CsjkOPFm7g-P18Fx1hVA_fmB_UAHC71b5yQhBM5eGzV9q83FCOnqwAgiSu8oThjl9ng3WZtzQsdlljuS60nNz-A4FH7EIsot12Y2d6iODlkZY_JWpvaJ6gm0mMgUghM_Ft8NQH2Ln9QCyWsx74C4XkS6Si0G6QxXkWTUqpsrZp7srYUnDH1HLdUrdEIJJND_mt9NCr"/>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-text-light dark:text-text-dark">Michael Chen</h4>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">ID: EMP-001</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-text-light dark:text-text-dark">Lead Engineer</span>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">Cloud Infrastructure</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span>
+                                Đang làm việc
+                            </span>
+</td>
+<td class="py-4 px-6 text-center">
+<span class="text-sm font-semibold text-text-light dark:text-text-dark">12</span>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">/ 15 ngày</span>
+</td>
+<td class="py-4 px-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<span class="text-sm font-bold text-text-light dark:text-text-dark">4.8</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px]">star</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="p-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 text-subtext-light dark:text-subtext-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 text-subtext-light dark:text-subtext-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="py-4 px-6">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-card-dark" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full overflow-hidden">
+<img alt="Sarah Johnson" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAIp9utE7KP020Ck9sChk44EhWvSN4VvwOfBIGLLpwWQDvirrrV7whyFnpqEWNHpUiR1TQ5zCibIndRqhROmQR1Goa0dxUUw9Fz9OK5T5c_cf-Qxbsuo7kf2CydnpGjaBNR5yPbAFZtWUjwp7uXOeTYLK0yFyLdAjp3BVVuxOXHNReZl0USjqO0qWrYgnhCn_ell2DF3xxUIPjQSoshl_PnbY79wz54T_YuBJOu_32FK_CFs207G0AqZ0SFkmDgLxDY_ArV9Q05i-k"/>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-text-light dark:text-text-dark">Sarah Johnson</h4>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">ID: EMP-042</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-text-light dark:text-text-dark">Product Designer</span>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">Product Design</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-1.5"></span>
+                                Công tác
+                            </span>
+</td>
+<td class="py-4 px-6 text-center">
+<span class="text-sm font-semibold text-text-light dark:text-text-dark">8</span>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">/ 15 ngày</span>
+</td>
+<td class="py-4 px-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<span class="text-sm font-bold text-text-light dark:text-text-dark">4.9</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px]">star</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="p-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 text-subtext-light dark:text-subtext-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 text-subtext-light dark:text-subtext-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="py-4 px-6">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-card-dark" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full overflow-hidden">
+<img alt="David Park" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAK3IY7B0MqJbQfsI_2vM31uhI-HvlbWadhR9fN5niMwp6fMqOwzZ9lYnqZXauSHOiOAbCWebU_NQMtd9_hHu295qQ2P0dJLstc9QhG9jJwTG01K4UHmsRWHequUP5ZjN4SGrtFs93jlpZNJW0OO0y7jmlelnO_puuo5XdeBFB-YQtokllV66P2BLjZpHaJS1Ss9T9IgI8lUwJrG_Pq1c0IR_6fOCO0u56SQxU_bTkeS8gbVdlqDhM926oXXIyW7hJN1WwTJ9l2PDC"/>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-text-light dark:text-text-dark">David Park</h4>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">ID: EMP-088</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-text-light dark:text-text-dark">DevOps Engineer</span>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">Engineering</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span>
+                                Đang làm việc
+                            </span>
+</td>
+<td class="py-4 px-6 text-center">
+<span class="text-sm font-semibold text-text-light dark:text-text-dark">15</span>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">/ 15 ngày</span>
+</td>
+<td class="py-4 px-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<span class="text-sm font-bold text-text-light dark:text-text-dark">4.5</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px]">star</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="p-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 text-subtext-light dark:text-subtext-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 text-subtext-light dark:text-subtext-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="py-4 px-6">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-card-dark" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full overflow-hidden">
+<img alt="Emily Davis" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf40ATYQ8Z6UlGlNyyHTyoRaQNhbpAciG43LX6jG1f7cD5_XEz3UEfm2k4E3TvwfNqk4Xub5vtSKnib2La8LNuvjV-YXks57hBci9IxDunbxTiK4Tx8e3sn0L2us2FqmTsipHIjeI9TQcqDGKf055quXWukWdYJlCHFFj9jdDssmVY7pbj6UeQ3J1i6dlBJR67ELIUGqeVTp26xFGTxPQHS5gnDD-E9XscL6TvzxDDVvmjvE5p_hwPAfxmVBxU0KhTDWn3gCItWdwc"/>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-text-light dark:text-text-dark">Emily Davis</h4>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">ID: EMP-092</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-text-light dark:text-text-dark">UX Researcher</span>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">Product Design</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400">
+<span class="w-1.5 h-1.5 rounded-full bg-orange-500 mr-1.5"></span>
+                                Nghỉ phép
+                            </span>
+</td>
+<td class="py-4 px-6 text-center">
+<span class="text-sm font-semibold text-text-light dark:text-text-dark">2</span>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">/ 15 ngày</span>
+</td>
+<td class="py-4 px-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<span class="text-sm font-bold text-text-light dark:text-text-dark">4.7</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px]">star</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="p-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 text-subtext-light dark:text-subtext-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 text-subtext-light dark:text-subtext-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="py-4 px-6">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-card-dark" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full overflow-hidden">
+<img alt="James Wilson" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRUzI0CIHfEBONO4uRGkq4x7CXVmNrnI9DfYspcxnEfhNFrb7umP0KTHzSqXnRIkUjPBindIaDeAw0luXAFJgDpKghnDNoTQ8I__8faWFrfU9YjYW4kF1nALzGxpo2FFb3-W4vjXjhZD-DB3RavAHFYmGCCYgJOoDK5ELDx8ysBbH5d0i7tHYBPS93EQD7-Odkdk9pruuqCYkTZ4dTgBBQvlA3Xt29RS7mDbuomWTDStUMwZKTDdMMRG1wehfEi7aYUy0NLpmCrTxN"/>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-text-light dark:text-text-dark">James Wilson</h4>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">ID: EMP-103</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-text-light dark:text-text-dark">Frontend Dev</span>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">Engineering</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span>
+                                Đang làm việc
+                            </span>
+</td>
+<td class="py-4 px-6 text-center">
+<span class="text-sm font-semibold text-text-light dark:text-text-dark">10</span>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">/ 15 ngày</span>
+</td>
+<td class="py-4 px-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<span class="text-sm font-bold text-text-light dark:text-text-dark">4.6</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px]">star</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="p-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 text-subtext-light dark:text-subtext-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 text-subtext-light dark:text-subtext-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex items-center justify-between px-6 py-4 border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+<span class="text-sm text-subtext-light dark:text-subtext-dark">
+                Hiển thị <span class="font-medium text-text-light dark:text-text-dark">1-5</span> trên <span class="font-medium text-text-light dark:text-text-dark">142</span> kết quả
+            </span>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-card-dark text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50" disabled="">Trước</button>
+<button class="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-card-dark text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-gray-700">Tiếp</button>
+</div>
+</div>
+</div>
+<script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        themeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+            } else {
+                html.classList.add('dark');
+            }
+        });
+    </script>
+
+</body></html>

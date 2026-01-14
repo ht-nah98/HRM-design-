@@ -1,0 +1,12 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Large files
+*.deb
+
+# Dependencies
+node_modules/
+
+# Agentic coding
+.gemini

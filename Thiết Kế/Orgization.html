@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sơ Đồ Cơ Cấu Tổ Chức</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e293b", 
+                        secondary: "#475569", 
+                        "background-light": "#f8fafc", 
+                        "background-dark": "#0f172a", 
+                        "card-light": "#ffffff",
+                        "card-dark": "#1e293b",
+                        "brand-blue": "#3b82f6",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem", 
+                        'xl': "1rem",
+                        '2xl': "1.5rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'card': '0 0 0 1px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.04)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }.tree-line-vertical {
+            position: absolute;
+            top: -2rem;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background-color: #e2e8f0;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+        .tree-connector-top {
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            height: 2rem;
+            width: 2px;
+            background-color: #e2e8f0;
+            transform: translateX(-50%);
+        }
+        .tree-branch-horizontal {
+            position: absolute;
+            top: -2rem;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #e2e8f0;
+        }.branch-node:first-child .tree-branch-horizontal {
+            left: 50%;
+        }
+        .branch-node:last-child .tree-branch-horizontal {
+            right: 50%;
+        }
+        .branch-node:only-child .tree-branch-horizontal {
+            display: none;
+        }.dark .tree-line-vertical, 
+        .dark .tree-connector-top, 
+        .dark .tree-branch-horizontal {
+            background-color: #334155;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-200">
+<nav class="sticky top-0 z-30 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
+                SJ
+            </div>
+<h1 class="text-lg font-semibold tracking-tight">Sarah Johnson</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">dark_mode</span>
+</button>
+</div>
+</nav>
+<main class="w-full max-w-[1600px] mx-auto px-4 py-8 overflow-x-auto">
+<header class="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Sơ Đồ Cơ Cấu Tổ Chức</h2>
+<p class="text-slate-500 dark:text-slate-400">Xem cấu trúc báo cáo và phân cấp phòng ban</p>
+</div>
+<div class="flex items-center gap-3 bg-white dark:bg-slate-800 p-1.5 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
+<button class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white rounded hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" title="Zoom Out">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<span class="text-sm font-medium px-2 min-w-[3rem] text-center">100%</span>
+<button class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white rounded hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" title="Zoom In">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+<div class="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<button class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white rounded hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" title="Fit to Screen">
+<span class="material-symbols-outlined text-[20px]">center_focus_strong</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white bg-primary rounded hover:bg-slate-700 transition-colors ml-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Export
+                </button>
+</div>
+</header>
+<div class="min-w-[1200px] pb-20">
+<div class="flex flex-col items-center">
+<div class="relative z-10 w-72 group cursor-pointer transition-transform hover:-translate-y-1 duration-300">
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-card p-5 border border-slate-200 dark:border-slate-700 flex items-start gap-4 hover:shadow-lg transition-shadow">
+<img alt="CEO" class="w-16 h-16 rounded-full object-cover ring-2 ring-slate-100 dark:ring-slate-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-p5r4Bhcgbsp3MBerxX6rNz88TSYmB8rO6LGvdo5deP-1D0lSniRTVBpY2jte6L_VRxzbpM8c-t5OiOnU1tnU0Bh10eplIZ2BW7XwFWV_mIDcPaMNF9PkUJLveePqnlRhjETLX5Wk39TBa3ajSiekXztjIOvvCn44sQR-rTdnYdRR0gOU4Q7JRg5LMTA_SRVeH1pX-bjmgrR65z2antzKhKv-ivuyuSQ4sdobVqVmm9sv5RED2JUXE2eih1HOvJOcMb7QZS4nfihI"/>
+<div class="flex-1 min-w-0">
+<span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold tracking-wider bg-slate-900 text-white mb-1">CEO</span>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white truncate">David Chen</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate">Chief Executive Officer</p>
+<div class="mt-2 flex items-center gap-1 text-xs text-slate-400">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                HQ - San Francisco
+                            </div>
+</div>
+</div>
+<div class="absolute -bottom-8 left-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700 -translate-x-1/2"></div>
+</div>
+<div class="flex justify-center mt-16 gap-12 relative w-full">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 w-[85%] h-0.5 bg-slate-200 dark:bg-slate-700"></div>
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700"></div>
+<div class="flex flex-col items-center relative branch-node">
+<div class="absolute -top-8 left-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700 -translate-x-1/2"></div>
+<div class="w-64 relative group cursor-pointer hover:z-20">
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-card p-4 border border-slate-200 dark:border-slate-700 flex items-center gap-3 hover:shadow-md transition-all">
+<img alt="CTO" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcJ_pkozvsFsXjfAzVeAqhb55X2QeT_jxL_7T7FVTljEFKiFbYLd6ZZqn6TmtTdlCrSTY5Km2uLEWuNgX4BI5beAp62FsOsVJB1Brs7m631k58BfYOxm7QctoJoHdDYciXc4LcZkpRcTkimVjeVfLtWOB0jEwjx8f_lTK0HJSVdtIvbQYRN2lg9xiDdKQ92jZ8WgTS3q8Lo3HJTQY5xS4dCvc8MhfpP2DYYCxxhHUiK3Nt7MVo7Cg7YFC2BJwDd49cJaRvOCFMxAvD"/>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white text-sm">Sarah Johnson</h3>
+<p class="text-xs text-primary font-medium mt-0.5">CTO</p>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Product &amp; Engineering</p>
+</div>
+<button class="ml-auto w-6 h-6 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:bg-slate-100">
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+<div class="absolute -bottom-8 left-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700 -translate-x-1/2"></div>
+</div>
+<div class="flex justify-center mt-16 gap-6 relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 w-[80%] h-0.5 bg-slate-200 dark:bg-slate-700"></div>
+<div class="flex flex-col items-center relative">
+<div class="absolute -top-8 left-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700 -translate-x-1/2"></div>
+<div class="w-56 bg-card-light dark:bg-card-dark rounded-xl shadow-sm p-3 border border-slate-200 dark:border-slate-700 flex flex-col gap-2 hover:border-blue-400 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs">RJ</div>
+<div>
+<h4 class="font-semibold text-sm text-slate-900 dark:text-white">Robert Jones</h4>
+<p class="text-[10px] text-slate-500">VP Engineering</p>
+</div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded px-2 py-1 flex justify-between items-center mt-1">
+<span class="text-[10px] text-slate-500">Direct Reports</span>
+<span class="text-[10px] font-bold bg-white dark:bg-slate-700 px-1.5 rounded shadow-sm">12</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center relative">
+<div class="absolute -top-8 left-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700 -translate-x-1/2"></div>
+<div class="w-56 bg-card-light dark:bg-card-dark rounded-xl shadow-sm p-3 border border-slate-200 dark:border-slate-700 flex flex-col gap-2 hover:border-blue-400 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<img alt="Product" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv4_KYtIthCSmioFMGZrkd_4a4snIG_gSDnrHKPeLJqtYrs0m5iZJa1cuOUIk5XykqFzSMPxU6-eMEt8D5P3DdDunU1TcOrOtg2ZCVM-mgMjawkEr1thRSJmY4XSHLCrHA9sOY1plx0k56MauZywg9QP3bcVHxukqNYgQCqCEefnM5eIt-2zUuMEkkaM2YB0f-7ZQ_MT7FcyNY3JSV5n-2pta2xPfOZTDBDpCGzGkIVjbUS4LyO496qhjC0KlfHXsgPe21gdzJvRkP"/>
+<div>
+<h4 class="font-semibold text-sm text-slate-900 dark:text-white">Emily Davis</h4>
+<p class="text-[10px] text-slate-500">VP Product</p>
+</div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded px-2 py-1 flex justify-between items-center mt-1">
+<span class="text-[10px] text-slate-500">Direct Reports</span>
+<span class="text-[10px] font-bold bg-white dark:bg-slate-700 px-1.5 rounded shadow-sm">8</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center relative branch-node">
+<div class="absolute -top-8 left-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700 -translate-x-1/2"></div>
+<div class="w-64 relative group cursor-pointer">
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-card p-4 border border-slate-200 dark:border-slate-700 flex items-center gap-3 hover:shadow-md transition-all">
+<div class="w-12 h-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold">MK</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white text-sm">Michael Kim</h3>
+<p class="text-xs text-primary font-medium mt-0.5">CFO</p>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Finance &amp; Ops</p>
+</div>
+<button class="ml-auto w-6 h-6 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:bg-slate-100">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center relative branch-node">
+<div class="absolute -top-8 left-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700 -translate-x-1/2"></div>
+<div class="w-64 relative group cursor-pointer">
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-card p-4 border border-slate-200 dark:border-slate-700 flex items-center gap-3 hover:shadow-md transition-all">
+<img alt="CMO" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgSm8BaN8kIgTCI63U9WBZpsqGMN9umFE1CC4yuPEV7fwOuJslEXoBk8q8c2pmhNY3sa-uFkb8_UV1i2EEyNqIrtuHZouznRasOA-0YhyVV6eeZtNVh5QT6VUp1DTqDFlwmmS0mxCHOdrZSRVM5K89IQDWYeSHXB001nvVZocksoEgydmIABFxQ57_Wayck8dJA0zCg0-ZObHhP_lJOn-9IGuDFhWJX2awxGKofwgu_gS_JyMdW8J8T18Tk8L95K84uK-gSfhnQsln"/>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white text-sm">Jessica Lee</h3>
+<p class="text-xs text-primary font-medium mt-0.5">CMO</p>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Marketing &amp; Sales</p>
+</div>
+<button class="ml-auto w-6 h-6 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:bg-slate-100">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center relative branch-node">
+<div class="absolute -top-8 left-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700 -translate-x-1/2"></div>
+<div class="w-64 relative group cursor-pointer">
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-card p-4 border border-slate-200 dark:border-slate-700 flex items-center gap-3 hover:shadow-md transition-all">
+<img alt="HR" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvcPn-EbpdcJGz_3qp8oq07M_xqcJ24ci4_xrsfwWp3qIq9IoevcIzoG2rFNM9ibkdRhGHDshHE1OvzS3FKH8DkxSI8_pdvwVh3nT7y4qn5bmME-rF05s1mQhMt6LY2n3cVovjh7mnrljNqlaFnA0AmoGzALGV52d04kfUvN2IZfDocUzMF17d02rRNN5v2JdIgDWXU_jqXPVLSrfzYkDnbdHpvC__LB5qgt3sd_DP_5Hspq64nKTnL6qxTe7GsDaQAUIwoe4_visa"/>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white text-sm">Alex Thompson</h3>
+<p class="text-xs text-primary font-medium mt-0.5">HR Director</p>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">People &amp; Culture</p>
+</div>
+<button class="ml-auto w-6 h-6 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:bg-slate-100">
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+<div class="absolute -bottom-8 left-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700 -translate-x-1/2"></div>
+</div>
+<div class="flex justify-center mt-16 gap-6 relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 w-[60%] h-0.5 bg-slate-200 dark:bg-slate-700"></div>
+<div class="flex flex-col items-center relative">
+<div class="absolute -top-8 left-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700 -translate-x-1/2"></div>
+<div class="w-56 bg-card-light dark:bg-card-dark rounded-xl shadow-sm p-3 border border-slate-200 dark:border-slate-700 flex flex-col gap-2 hover:border-blue-400 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs">LM</div>
+<div>
+<h4 class="font-semibold text-sm text-slate-900 dark:text-white">Lisa Min</h4>
+<p class="text-[10px] text-slate-500">Recruiting Lead</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center relative">
+<div class="absolute -top-8 left-1/2 w-0.5 h-8 bg-slate-200 dark:bg-slate-700 -translate-x-1/2"></div>
+<div class="w-56 bg-card-light dark:bg-card-dark rounded-xl shadow-sm p-3 border border-slate-200 dark:border-slate-700 flex flex-col gap-2 hover:border-blue-400 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-xs">BP</div>
+<div>
+<h4 class="font-semibold text-sm text-slate-900 dark:text-white">Ben Parker</h4>
+<p class="text-[10px] text-slate-500">Employee Relations</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white dark:bg-slate-800 rounded-full shadow-lg border border-slate-200 dark:border-slate-700 p-2 flex items-center gap-2 z-50">
+<button class="w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center transition-colors text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex items-center gap-1.5 px-2">
+<button class="w-2 h-2 rounded-full bg-primary"></button>
+<button class="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600 hover:bg-primary transition-colors"></button>
+<button class="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600 hover:bg-primary transition-colors"></button>
+</div>
+<button class="w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center transition-colors text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+
+</body></html>
