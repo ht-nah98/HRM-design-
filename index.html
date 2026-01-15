@@ -2206,6 +2206,49 @@
         <div class="slide-number">15 / 25</div>
     </div>
 
+    <!-- Slide 15b: Transition / Section Break -->
+    <div class="slide" id="slide15b">
+        <div class="slide-header" style="margin-bottom: 20px;">
+            <div class="module-tag" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); ">PHẦN 3</div>
+            <h2 style="font-size: 56px; margin-top: 15px;">Chi Tiết Triển Khai</h2>
+            <p style="color: #667eea; font-size: 24px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-top: 10px;">Tháng đầu tiên 01/2026</p>
+        </div>
+        
+        <div style="max-width: 800px; text-align: center; margin-bottom: 40px;">
+            <p style="font-size: 18px; color: #aaa; line-height: 1.6;">
+                Kết thúc phần giới thiệu các Modules. Chúng ta sẽ đi sâu vào <strong style="color:#fff;">Foundation (Nền tảng)</strong> và các User Story cốt lõi cần hoàn thiện ngay trong tháng đầu tiên.
+            </p>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px 50px; position: relative; z-index: 5;">
+             <!-- US 01 -->
+             <div style="text-align: center;">
+                <div style="font-size: 14px; color: #aaa; margin-bottom: 5px;">KHỞI TẠO</div>
+                <div style="font-size: 32px; font-weight: 800; color: #fff;">US-01</div>
+                <div style="font-size: 12px; color: #667eea;">Hồ Sơ Nhân Sự</div>
+             </div>
+
+             <!-- Arrow line -->
+             <div style="display: flex; flex-direction: column; align-items: center; width: 200px;">
+                <div style="width: 100%; height: 2px; background: linear-gradient(90deg, #667eea, #764ba2);"></div>
+                <div style="font-size: 10px; color: #888; margin-top: 8px;">PHẠM VI THÁNG 1</div>
+             </div>
+
+             <!-- US 08 -->
+             <div style="text-align: center;">
+                <div style="font-size: 14px; color: #aaa; margin-bottom: 5px;">HOÀN THIỆN</div>
+                <div style="font-size: 32px; font-weight: 800; color: #fff;">US-08</div>
+                <div style="font-size: 12px; color: #764ba2;">Phân Quyền (RBAC)</div>
+             </div>
+        </div>
+        
+        <div style="margin-top: 40px; font-style: italic; opacity: 0.6; font-size: 14px;">
+            "Dữ liệu đúng ngay từ đầu - Phân quyền chuẩn ngay từ gốc"
+        </div>
+
+        <div class="slide-number">Transition</div>
+    </div>
+
 
     <!-- Slide 16: Foundation - The Problem (NEW) -->
     <div class="slide" id="slide16">
@@ -3217,5 +3260,45 @@
             }
         })();
     </script>
+
+    <!-- Specific Styles for Slide 15b in Light Mode -->
+    <style>
+        body.light-theme #slide15b .module-tag {
+            background: rgba(102, 126, 234, 0.1) !important;
+            border-color: rgba(102, 126, 234, 0.2) !important;
+            color: #667eea !important;
+        }
+        body.light-theme #slide15b h2 { color: #1e293b !important; }
+        body.light-theme #slide15b > div > p { color: #475569 !important; } /* Main description */
+        body.light-theme #slide15b .slide-header p { color: #667eea !important; } /* Subtitle */
+        
+        /* The container for US nodes */
+        body.light-theme #slide15b div[style*="background: rgba(255,255,255,0.03)"] {
+            background: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* US Number (US-01, US-08) */
+        body.light-theme #slide15b div[style*="color: #fff"] {
+            color: #1e293b !important;
+        }
+        
+        /* Labels (KHOI TAO, HOAN THIEN) */
+        body.light-theme #slide15b div[style*="color: #aaa"] {
+            color: #64748b !important;
+        }
+        
+        /* Range label */
+        body.light-theme #slide15b div[style*="color: #888"] {
+            color: #94a3b8 !important;
+        }
+        
+        /* Footer quote */
+        body.light-theme #slide15b div[style*="opacity: 0.6"] {
+            color: #475569 !important;
+            opacity: 0.8 !important;
+        }
+    </style>
 </body>
 </html>
