@@ -780,6 +780,27 @@
             --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
         }
 
+        /* Responsive Design Gallery Grid */
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            .design-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .design-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         body.light-theme {
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -1282,7 +1303,7 @@
                 </div>
                  <div class="p-body">
                     <div style="font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 10px;">
-                        QUẢN TRỊ CẢM TÍNH<br>TĂNG RỦI RO • LÃNG PHÍ
+                        QUẢN TRỊ CẢM TÍNH<br>TĂNG RỦI RO & LÃNG PHÍ
                     </div>
                     <div style="font-size: 12px; opacity: 0.8;">
                         Không thể mở rộng quy mô nếu tiếp tục vận hành thủ công.
@@ -1297,7 +1318,7 @@
     <div class="slide" id="slide5">
         <div class="slide-header">
             <h2>Mục Tiêu <span class="gradient-text">HRM System</span></h2>
-            <p>Trở thành "Huyết mạch số" của doanh nghiệp, nơi dữ liệu nhân sự chảy xuyên suốt để nuôi dưỡng văn hóa hiệu </p>
+            <p>Trở thành "Huyết mạch số" của doanh nghiệp, nơi dữ liệu nhân sự chảy xuyên suốt để nuôi dưỡng văn hóa hiệu quả </p>
         </div>
         <div class="pillar-container">
             <div class="pillar-card">
@@ -1389,7 +1410,6 @@
                     <div style="margin-bottom:10px;">1. <strong>Tập trung 100%</strong> hồ sơ nhân viên vào một hệ thống duy nhất.</div>
                     <div style="margin-bottom:10px;">2. <strong>Chuẩn hóa</strong> cấu trúc dữ liệu nhân sự theo tiêu chuẩn & sơ đồ tổ chức.</div>
                     <div style="margin-bottom:10px;">3. Đảm bảo tính <strong>chính xác và nhất quán</strong> của dữ liệu.</div>
-                    <div>4. Hỗ trợ <strong>tra cứu nhanh</strong> và báo cáo <strong>real-time</strong>.</div>
                 </div>
 
                 <div class="goals-bar">
@@ -1416,6 +1436,7 @@
                         <ul class="epic-list">
                             <li>• <strong>HR:</strong> Tạo mới & Quản lý hồ sơ nhân sự End-to-End.</li>
                             <li>• <strong>Dữ liệu:</strong> Validate chặt chẽ, không thiếu trường bắt buộc.</li>
+                            <li>• <strong>Đồng bộ:</strong> Tài khoản nhân sự mới được đồng bộ với email của công ty.</li>
                         </ul>
                     </div>
                 </div>
@@ -1433,7 +1454,7 @@
                     <div class="epic-body">
                         <ul class="epic-list">
                             <li>• <strong>Cơ cấu:</strong> Phản ánh đúng sơ đồ tổ chức thực tế (5 cấp).</li>
-                            <li>• <strong>Chức danh:</strong> Chuẩn hóa theo Job Level toàn cầu.</li>
+                            <li>• <strong>Chức danh:</strong> Chuẩn hóa theo Job Level.</li>
                             <li>• <strong>Hiển thị:</strong> Cây sơ đồ trực quan, dễ dàng tra cứu.</li>
                         </ul>
                     </div>
@@ -1479,7 +1500,7 @@
                     <div style="margin-bottom:10px;">1. <strong>100% nhân viên mới</strong> hoàn thành checklist onboarding trong 7 ngày đầu.</div>
                     <div style="margin-bottom:10px;">2. <strong>Số hóa 100%</strong> quy trình đánh giá thử việc (Online).</div>
                     <div style="margin-bottom:10px;">3. Thu thập <strong>feedback cải thiện</strong> từ nhân viên mới.</div>
-                    <div>4. Rút ngắn <strong>30% thời gian</strong> đạt năng suất (Time-to-Productivity).</div>
+
                 </div>
 
                 <div class="goals-bar">
@@ -1813,7 +1834,7 @@
                     </div>
                     <div class="epic-body">
                         <ul class="epic-list">
-                            <li>• <strong>Thư viện:</strong> Ngân hàng KPI/Năng lực cốt lõi.</li>
+                            <li>• <strong>Thư viện:</strong> KPI/Năng lực cốt lõi.</li>
                             <li>• <strong>Cấu hình:</strong> Tỷ trọng đánh giá, Thang điểm, Xếp loại (Bell Curve).</li>
                             <li>• <strong>Chu kỳ:</strong> Thiết lập kỳ đánh giá (Tháng/Quý/Năm).</li>
                         </ul>
@@ -1904,7 +1925,6 @@
                     <div class="epic-body">
                         <ul class="epic-list">
                             <li>• <strong>Chi phí:</strong> Tổng quỹ lương, thưởng, phúc lợi, BHXH theo phòng ban.</li>
-                            <li>• <strong>Hiệu quả:</strong> Doanh thu trên nhân sự (Revenue per Employee).</li>
                             <li>• <strong>Tuyển dụng:</strong> Chi phí tuyển dụng trên một nhân sự (Cost per Hire).</li>
                         </ul>
                     </div>
@@ -2426,8 +2446,8 @@
                                     <div class="title" style="font-size: 8px;">L3 (DEPT)</div>
                                     <div class="content" style="font-size: 11px;">Phòng Công Nghệ</div>
                                     <div style="display:flex; gap:8px;">
-                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff A</div>
-                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">👤 Staff B</div>
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">L4: Team A</div>
+                        <div class="member-node" style="font-size: 11px; padding: 6px 12px;">L5: Staff B</div>
                     
                      </div>
                                 </div>
@@ -2520,7 +2540,7 @@
                         <div style="font-family: monospace; font-size: 16px; color: #fff; text-align: center;">
                             <span style="color: #f2994a;">[Cấp Độ]</span> + <span style="color: #11998e;">[Chức Năng]</span>
                         </div>
-                        <div style="font-size: 12px; color: #aaa; text-align: center; margin-top: 5px;">(e.g., Senior Developer, HR Manager)</div>
+                        <div style="font-size: 12px; color: #aaa; text-align: center; margin-top: 5px;">(e.g.,Nhân sự AI , Quản lý HR, CEO An Tue )</div>
                     </div>
 
                     <h3 style="color: #11998e; font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 5px;">GIÁ TRỊ MANG LẠI</h3>
@@ -2585,7 +2605,7 @@
     </div>
 
     <!-- Slide 20: Job Function - Function vs Product (NEW) -->
-    <div class="slide" id="slide20">
+    <!-- <div class="slide" id="slide20">
         <div class="module-container" style="flex-direction: column; padding: 40px 60px;">
             <div style="text-align: center; margin-bottom: 20px;">
                 <div class="module-tag" style="background: linear-gradient(90deg, #11998e, #38ef7d); margin: 0 auto 10px; display: inline-block;">THE FOUNDATION</div>
@@ -2595,7 +2615,7 @@
 
             <div style="display: flex; gap: 40px; width: 100%; max-width: 1000px; margin: 0 auto;">
                 <!-- Function Column -->
-                <div style="flex: 1; background: rgba(75, 108, 183, 0.1); border: 1px solid #4b6cb7; border-radius: 16px; padding: 25px;">
+                <!-- <div style="flex: 1; background: rgba(75, 108, 183, 0.1); border: 1px solid #4b6cb7; border-radius: 16px; padding: 25px;">
                     <div style="text-align: center; margin-bottom: 20px;">
                         <div style="font-size: 36px; margin-bottom: 10px;">⚙️</div>
                         <h3 style="color: #4b6cb7; font-size: 18px; margin-bottom: 5px;">FUNCTION</h3>
@@ -2616,7 +2636,7 @@
                 </div>
 
                 <!-- Product Column -->
-                <div style="flex: 1; background: rgba(17, 153, 142, 0.1); border: 1px solid #11998e; border-radius: 16px; padding: 25px;">
+                <!-- <div style="flex: 1; background: rgba(17, 153, 142, 0.1); border: 1px solid #11998e; border-radius: 16px; padding: 25px;">
                     <div style="text-align: center; margin-bottom: 20px;">
                         <div style="font-size: 36px; margin-bottom: 10px;">📦</div>
                         <h3 style="color: #11998e; font-size: 18px; margin-bottom: 5px;">PRODUCT</h3>
@@ -2635,7 +2655,7 @@
             </div>
 
             <!-- Key Insight -->
-            <div style="margin-top: 25px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <!-- <div style="margin-top: 25px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
                 <div style="background: rgba(255,255,255,0.05); border: 1px dashed #555; border-radius: 12px; padding: 15px 30px;">
                     <div style="font-size: 14px; color: #fff; margin-bottom: 5px;">
                         <strong>Quy tắc đặt tên:</strong> <span style="color: #f2994a;">[Level]</span> + <span style="color: #4b6cb7;">[Function]</span> hoặc <span style="color: #11998e;">[Product]</span>
@@ -2647,7 +2667,7 @@
             </div>
         </div>
         <div class="slide-number">20 / 26</div>
-    </div>
+    </div> --> 
 
     <!-- ============================================== -->
     <!-- SLIDE DESIGN SHOWROOM -->
@@ -2738,6 +2758,14 @@
 
                     <!-- Features List -->
                     <div style="padding-left: 10px;">
+                                                <div style="display: flex; align-items: flex-start;">
+                            <span style="color: #00d2ff; font-size: 18px; margin-right: 12px;">•</span>
+                            <div>
+                                <strong style="color: #fff;">Đồng bộ thông tin Email - HRM:</strong>
+                                <span style="color: #aaa;"> Tự tạo tài khoản email công ty khi có nhân sự mới</span>
+                            </div>
+                        </div>
+
                         <div style="margin-bottom: 18px; display: flex; align-items: flex-start;">
                             <span style="color: #00d2ff; font-size: 18px; margin-right: 12px;">•</span>
                             <div>
@@ -2759,6 +2787,7 @@
                                 <span style="color: #aaa;"> Hợp đồng, Quyết định, Bằng cấp online.</span>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -2847,7 +2876,7 @@
                         <div class="epic-icon-box" style="color: #00d2ff;">📝</div>
                         <div class="epic-title-group">
                             <div class="epic-name">US-01: THÔNG TIN CƠ BẢN (Master Data)</div>
-                            <div class="epic-desc">Nhập liệu & quản lý thông tin cốt lõi</div>
+                            <div class="epic-desc">Nhập liệu, đồng bộ & quản lý thông tin cốt lõi</div>
                         </div>
                          <div class="epic-arrow">▼</div>
                     </div>
@@ -2947,7 +2976,8 @@
             </div>
 
             <!-- Image Gallery Grid -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 1200px; margin: 0 auto;">
+            <!-- Image Gallery Grid -->
+            <div class="design-grid">
                 <!-- Image 1: Profile Overview -->
                 <div class="design-card" onclick="openLightbox('Ảnh Showroom/profile All Overview.png', 'Profile Overview - Tổng quan hồ sơ nhân sự')">
                     <img src="Ảnh Showroom/profile All Overview.png" alt="Profile Overview" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px;">
